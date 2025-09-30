@@ -24,14 +24,15 @@
 
         /* Sidebar Styles */
         .sidebar {
-            width: 250px;
-            background-color: #156227;
+            width: 260px;
+            background: linear-gradient(to bottom, #156227, #0f3d1f);
             color: white;
             padding: 0;
             box-shadow: 2px 0 5px rgba(0,0,0,0.1);
             overflow-y: auto;
             height: 100vh;
             position: relative;
+            border-right: 1px solid #e9ecef;
         }
 
         .sidebar h2 {
@@ -41,7 +42,7 @@
             font-size: 24px;
             position: sticky;
             top: 0;
-            background-color: #156227;
+            background: linear-gradient(to bottom, #156227, #0f3d1f);
             z-index: 10;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
@@ -65,14 +66,15 @@
         }
 
         #nav-menu {
-            padding-bottom: 20px;
+            padding: 10px 0 20px 0;
         }
 
         .nav-item {
             padding: 15px 20px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, border-left-color 0.3s ease;
             border-left: 4px solid transparent;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         .nav-item:hover {
@@ -118,6 +120,16 @@
             transition: transform 0.3s ease;
         }
 
+        .nav-arrow::before {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 6px solid white;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+        }
+
         .nav-arrow.expanded {
             transform: rotate(90deg);
         }
@@ -125,11 +137,11 @@
         /* Main Content Styles */
         .main-content {
             flex: 1;
-            padding: 40px;
+            padding: 50px;
             background-color: white;
             margin: 20px 20px 20px 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
 
         .welcome-section {
@@ -178,10 +190,11 @@
             font-size: 18px;
             color: #444;
             margin-bottom: 30px;
-            padding: 20px;
-            background-color: #f8f9fa;
+            padding: 25px;
+            background: linear-gradient(to right, #f8f9fa, #ffffff);
             border-left: 4px solid #28a745;
-            border-radius: 4px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .sources-container {
@@ -194,7 +207,13 @@
             background-color: #ffffff;
             border: 1px solid #e9ecef;
             border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .source-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
         }
 
         .source-title {
@@ -297,11 +316,12 @@
             font-size: 16px;
             color: #444;
             margin: 25px 0;
-            padding: 20px;
-            background-color: #f8f9fa;
+            padding: 25px;
+            background: linear-gradient(to right, #f8f9fa, #ffffff);
             border-left: 4px solid #17a2b8;
-            border-radius: 4px;
+            border-radius: 8px;
             line-height: 1.7;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         /* Social Links Styles */
@@ -380,7 +400,7 @@
 
         /* Likes Styles */
         .likes-section { margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 8px; border: 1px solid #e9ecef; display: flex; align-items: center; gap: 10px; }
-        .like-button { background: none; border: none; cursor: pointer; font-size: 24px; transition: transform 0.2s; }
+        .like-button { background: none; border: none; cursor: pointer; font-size: 16px; font-weight: bold; transition: transform 0.2s; }
         .like-button:hover { transform: scale(1.1); }
         .like-button.liked { color: #28a745; }
         .like-count { font-size: 16px; font-weight: bold; color: #333; }
@@ -577,11 +597,11 @@
 
             
             "intro_islam": {
-                title: "Islam - A Summary",
+                title: "Islam - an Introduction",
                 subTopics: {
-                    "Islam - A Summary": {
+                    "Islam - an Introduction": {
                         title: "Introduction to Islam",
-                        introduction: "Islam and the 'prophet' Muhammad in particular can be described in one word: clueless. Muhammad, over the course of his 23 year 'prophethood', had absolutely no clue what he was doing or saying. The character Muhammad is a good representation of what people in  7th century arabia believed, mixed with a pinch of interest and admiration for abrahamic belief. This exactly describes Muhammad. Perhaps we shouldn't blame him for his character and his words, but rather for his lying about being a prophet, because his personal beliefs (such as mysogny, having no issues with cruelty, child marriage, etc.) were simply a reflection of what people in the 7th century thought to be true. It is also possible that he suffered from a mental illness or truly was possessed by demons. What is clear to say though: Muhammad was neither an example for all times, nor is Islam a religion for all times.",
+                        introduction: "Islam and the 'prophet' Muhammad in particular can be described in one word: clueless. Muhammad, over the course of his 23 year 'prophethood', had absolutely no clue what he was doing or saying. The character Muhammad is a good representation of what people in  7th century arabia believed, mixed with a pinch of interest and admiration for abrahamic belief. This exactly describes Muhammad. Perhaps we shouldn't blame him for his character and his words, but rather for his lying about being a prophet, because his personal beliefs (such as mysogny, having no issues with cruelty, child marriage, etc.) were simply a reflection of what people in the 7th century thought to be true. It is also possible that he suffered from a mental illness or truly was possessed by demons. What is clear to say though: Muhammad was neither an example for all times, nor is Islam a religion for all times. And yet Islam is becoming more and more popular especially among teenage boys and girls, due to the fact that it seems so 'simple' and 'logical' and perhaps even trustworthy, especially because popular Muslim apologists constantly, and i mean constantly, lie about Islam. The things people do not want to hear, they won't tell you. That's why the truth is that it is the complete opposite. Islam copied so much from Judaism, Christianity and other Pagan beliefs that its core theology from the plain text is extremely inconsistent and confused, the Quran, when you truly investigate it, is an incredibly sloppy and unimpressive book. It's not simple either: because of this, plenty of Islamic theology is messed up and simply makes no sense. It's inconsistent. This is exactly what happens when you copy from Jews and Christians without understanding what it means. The morality of Muhammad and the Quran are explained away and defended with tons of lies and deceiving comparisons. What Muslims for example very much like to do when confronted with a moral issue is to deflect it back to the Bible and be something like 'Your bible is even worse!', and that critique is extemely inaccurate or taken out of context entirely. It's very unfortunate so many are falling for these lies without investigating it themselves. A phrase repeated over and over on the internet is this, and you might know it 'without lies, Islam dies'. It is sadly very fitting.",
                         sources: [
 
 
@@ -1384,7 +1404,8 @@
                     }
                 }
             },
-            "mistakes": {
+           
+              "mistakes": {
                 title: "Mistakes & Nonsense",
                 subTopics: {
 
@@ -2077,6 +2098,12 @@
                                 grading: "Sahih (Authentic)"
                             },
                             {
+                                title: "Sahih Muslim 2020a",
+                                text: "When any one of you intends to eat (meal), he should eat with his right hand. and when he (intends) to drink he should drink with his right hand, for the Satan eats with his left hand and drinks with his left hand.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
                                 title: "Sunan Abi Dawud 3776",
                                 text: "When any of you eats, he should eat with his right hand, and when he drinks, he should drink with his right hand, for the devil eats with his left hand and drinks with his left hand.",
                                 type: "hadith",
@@ -2176,11 +2203,70 @@
                                 grading: "Sahih (Authentic)"
                             },
                             {
+                                title: "Sahih Muslim 2113a",
+                                text: "Angels do not accompany the travellers who have with them a dog and a bell.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih Muslim 2114",
+                                text: "Abu Huraira reported Allah's Messenger (ﷺ) as saying: The bell is the musical instrument of the Satan.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sunan Abi Dawud 4231",
+                                text: "Bunanah, female client of 'Abd al-Rahman b. Hayyan al-Ansari told that when she was with 'Aishah a girl wearing little tinkling bells was brought in to her. She ordered that they were not to bring her in where she was unless they cut off her little bells. She said: I heard the Messenger of Allah (ﷺ) say: The angels do not enter a house in which there is a bell.",
+                                type: "hadith",
+                                grading: "Hasan (Good)"
+                            },
+                            {
+                                title: "",
+                                text: "",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "",
+                                text: "",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                type: "commentary",
+                                text: "What's wrong with dogs and pictures?"
+                            },
+                            {
                                 title: "Sahih al-Bukhari 5949",
                                 text: "The Prophet (ﷺ) said, 'Angels do not enter a house in which there is a dog or there are pictures.'",
                                 type: "hadith",
                                 grading: "Sahih (Authentic)"
-                            }
+                            },
+                            {
+                                title: "Sahih al-Bukhari 2105",
+                                text: "(mother of the faithful believers) I bought a cushion with pictures on it. When Allah's Messenger (ﷺ) saw it, he kept standing at the door and did not enter the house. I noticed the sign of disgust on his face, so I said, 'O Allah's Messenger (ﷺ)! I repent to Allah and H is Apostle . (Please let me know) what sin I have done.' Allah's Messenger (ﷺ) said, 'What about this cushion?' I replied, 'I bought it for you to sit and recline on.' Allah's Messenger (ﷺ) said, 'The painters (i.e. owners) of these pictures will be punished on the Day of Resurrection. It will be said to them, 'Put life in what you have created (i.e. painted).' ' The Prophet (ﷺ) added, <strong>'The angels do not enter a house where there are pictures.'</strong>",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih Muslim 2106a",
+                                text: "Angels do not enter a house in which there is a dog or a picture.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih Muslim 2104a",
+                                text: "Never has Allah or His messengers (angels) ever broken their promise. Then he cast a glance (and by chance) found a puppy under his cot and said: 'A'isha, when did this dog enter here? She said: By Allah, I don't know He then commanded and it was turned out. Then Gabriel came and Allah's Messenger (ﷺ) said to him: You promised me and I waited for you, but you did not come, whereupon he said: It was the dog in your house which prevented me (to come), for we (angels) do not enter a house in which there is a dog or a picture.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih al-Bukhari 3227",
+                                text: "Once Gabriel promised the Prophet (that he would visit him, but Gabriel did not come) and later on he said, 'We, angels, do not enter a house which contains a picture or a dog.'",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            
                             
                             
                         ]
@@ -2256,6 +2342,199 @@
                             {
                                 title: "Sahih Muslim 2026",
                                 text: "None of you should drink while standing; and if anyone forgets, he must vomit.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih al-Bukhari 4887",
+                                text: "Allah's Messenger (ﷺ) has cursed the lady who uses false hair.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih al-Bukhari 5205",
+                                text: "An Ansari woman gave her daughter in marriage and the hair of the latter started falling out. The Ansari women came to the Prophet (ﷺ) and mentioned that to him and said, 'Her (my daughter's) husband suggested that I should let her wear false hair.' The Prophet (ﷺ) said, 'No, (don't do that) for Allah sends His curses upon such ladies who lengthen their hair artificially.'",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih al-Bukhari 5934",
+                                text: "An Ansari girl was married and she became sick and all her hair fell out intending to provide her with false hair. They asked the Prophet (ﷺ) who said, 'Allah has cursed the lady who artificially lengthens (her or someone else's) hair and also the one who gets her hair lengthened.'",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih al-Bukhari 5635",
+                                text: "Allah's Messenger (ﷺ) ordered us to do seven things and forbade us from seven. He ordered us to visit the sick, to follow funeral processions, (to say) to a sneezer, (May Allah bestow His Mercy on you, if he says, Praise be to Allah), to accept invitations, to greet (everybody), to help the oppressed and to help others to fulfill their oaths. <strong>He forbade us to wear gold rings, to drink in silver (utensils), to use Mayathir (silken carpets placed on saddles), to wear Al-Qissi (a kind of silken cloth), to wear silk, Dibaj or Istabraq (two kinds of silk).</strong>",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih al-Bukhari 5864",
+                                text: "The Prophet (ﷺ) forbade the wearing of a gold ring.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih al-Bukhari 5650",
+                                text: "Allah's Messenger (ﷺ) ordered us to do seven things and forbade us to do seven other things. He forbade us to wear gold rings, silk, Dibaj, Istabriq, Qissy, and Maithara; and ordered us to accompany funeral processions, visit the sick and greet everybody. (See Hadith No. 104)",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sunan Abi Dawud 4057",
+                                text: "The Prophet of Allah (ﷺ) took silk and held it in his right hand, and took gold and held it in his left hand and said: both of these are prohibited to the males of my community.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih al-Bukhari 5846",
+                                text: "Narrated Anas: The Prophet (ﷺ) forbade men to use saffron.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih al-Bukhari 161",
+                                text: "The Prophet (ﷺ) said, 'Whoever performs ablution should clean his nose with water by putting the water in it and then blowing it out, and whoever cleans his private parts with stones should do it with odd number of stones.'",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sunan Abi Dawud 4159",
+                                text: "The Messenger of Allah (ﷺ) forbade combing the hair except every second day.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            
+                            {
+                                title: "Sunan Abi Dawud 28",
+                                text: "Humayd al-Himyari said: I met a man (Companion of the Prophet) who remained in the company of the Prophet (ﷺ) just as AbuHurayrah remained in his company. He then added: The Messenger of Allah (ﷺ) forbade that anyone amongst us should comb (his hair) every day or urinate in the place where he takes a bath.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih al-Bukhari 1279",
+                                text: "One of the sons of Um 'Atiyya died, and when it was the third day she asked for a yellow perfume and put it over her body, and said, 'We were forbidden to mourn for more than three days except for our husbands.'",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih al-Bukhari 1280",
+                                text: "When the news of the death of Abu Sufyan reached from Sham, Um Habiba on the third day, asked for a yellow perfume and scented her cheeks and forearms and said, 'No doubt, I would not have been in need of this, had I not heard the Prophet (ﷺ) saying: 'It is not legal for a woman who believes in Allah and the Last Day to mourn for more than three days for any dead person except her husband, for whom she should mourn for four months and ten days.'",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sunan Abi Dawud 3847",
+                                text: "When one of you eats, he must not wipe his hand with a handkerchief till he licks it or gives it to someone to lick.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih al-Bukhari 5456",
+                                text: "The Prophet (ﷺ) said, 'When you eat, do not wipe your hands till you have licked it, or had it licked by somebody else.'",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih al-Bukhari 5596",
+                                text: "I heard `Abdullah bin Abi `Aufa saying, 'The Prophet (ﷺ) forbade the use of green jars.' I said, 'Shall we drink out of white jars?' He said, 'No.'",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih al-Bukhari 5625",
+                                text: "Allah's Messenger (ﷺ) forbade the bending of the mouths of water skins for the sake of drinking from them.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih al-Bukhari 5632",
+                                text: "While Hudhaita was at Mada'in, he asked for water. The chief of the village brought him a silver vessel. Hudhaifa threw it away and said, 'I have thrown it away because I told him not to use it, but he has not stopped using it. The Prophet (ﷺ) forbade us to wear clothes of silk or Dibaj, and to drink in gold or silver utensils, and said, 'These things are for them (unbelievers) in this world and for you (Muslims) in the Hereafter.' '",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih al-Bukhari 5634",
+                                text: "(the wife of the Prophet) Allah's Messenger (ﷺ) said, 'He who drinks in silver utensils is only filling his `Abdomen with Hell Fire.'",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih al-Bukhari 5635",
+                                text: "Allah's Messenger (ﷺ) ordered us to do seven things and forbade us from seven. He ordered us to visit the sick, to follow funeral processions, (to say) to a sneezer, (May Allah bestow His Mercy on you, if he says, Praise be to Allah), to accept invitations, to greet (everybody), to help the oppressed and to help others to fulfill their oaths. He forbade us to wear gold rings, to drink in silver (utensils), to use Mayathir (silken carpets placed on saddles), to wear Al-Qissi (a kind of silken cloth), to wear silk, Dibaj or Istabraq (two kinds of silk).",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih Muslim 2065a",
+                                text: "He who drinks in the vessel of silver in fact drinks down in his belly the fire of Hell.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih Muslim 2065c",
+                                text: "He who drank in vessels of gold or silver he in fact drank down in his belly the fire of Hell.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih Muslim 2067a",
+                                text: "While we were with Hudhaifa in Mada'in he asked for water. A villager brought a drink for him in a silver vessel. He (Hudhaifa) threw it away saying: I inform you that I have already conveyed to him that he should not serve me drink in it (silver vessel) for Allah's Messenger (ﷺ) had said: Do not drink in gold and silver vessels, and do not wear brocade or silk, for these are meant for them (the non-believers) in this world, but they are meant for you in the Hereafter on the Day, of Resurrection.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sunan Abi Dawud 3717",
+                                text: "The Prophet (ﷺ) forbade that a man should drink while standing.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sunan Abi Dawud 4204",
+                                text: "Abu Quhafah was brought on the day of the conquest of Mecca with head and beard while like hyssop. The Messenger of Allah (ﷺ) said: Change this something, but avoid black.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sunan Abi Dawud 4044",
+                                text: "The Messenger of Allah (ﷺ) forbade us to wear a Qassi garment, a garment dyed with safflower, gold rings, and reading the Qur'an while bowing.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih al-Bukhari 5855",
+                                text: "Allah's Messenger (ﷺ) said, 'If you want to put on your shoes, put on the right shoe first; and if you want to take them off, take the left one first. Let the right shoe be the first to be put on and the last to be taken off.'",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih Muslim 2097b",
+                                text: "None of you should walk in one sandal; either he should wear the two or should take off the two.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih Muslim 267b",
+                                text: "When anyone amongst you enters the privy he should not touch his penis with his right hand.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sunan an-Nasa'i 24",
+                                text: "'When any one of you urinates, let him not hold his penis in his right hand.'",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih al-Bukhari 2614",
+                                text: "The Prophet (ﷺ) gave me a silken dress as a gift and I wore it. When I saw the signs of anger on his face, I cut it into pieces and distributed it among my wives.'",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "",
+                                text: "",
                                 type: "hadith",
                                 grading: "Sahih (Authentic)"
                             },
@@ -2568,6 +2847,7 @@
                                 grading: "Sahih (Authentic)"
                             },
                             
+                            
                             {
                                 title: "Quran 5:33",
                                 text: "Indeed, the penalty for those who wage war against Allah and His Messenger and strive upon earth [to cause] corruption is none but that they be killed OR crucified OR that their hands and feet be cut off from opposite sides OR that they be exiled from the land. That is for them a disgrace in this world; and for them in the Hereafter is a great punishment,"
@@ -2575,6 +2855,7 @@
                             {type: "commentary",
                                 text: "See also: https://sunnah.com/bukhari:5685, https://sunnah.com/bukhari:5686, https://sunnah.com/bukhari:6802, https://sunnah.com/bukhari:680, https://sunnah.com/bukhari:233"
                             },
+                            
                             {
                                 type: "commentary",
                                 text: "Muhammad cursing an orphan girl among others:"
@@ -2604,6 +2885,23 @@
                                 type: "hadith",
                                 grading: "Sahih (Authentic)"
                             },
+                            {
+                                type: "commentary",
+                                text: "Muhammad was also two-faced:"
+                            },
+                            {
+                                title: "Sunan Abi Dawud 4791",
+                                text: "A man asked permission to see the Prophet (ﷺ), and he said: He is a bad son of the tribe, or: He is a bad member of the tribe. He then said : Give him permission. Then when he entered, he spoke to him leniently. `A’isha asked : Apostle of Allah! You spoke to him leniently while you said about him what you said! He replied: The one who will have the worst position in Allah’s estimation on the Day of Resurrection will be the one whom people left alone for fear of his ribaldry.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sunan Abi Dawud 4872",
+                                text: "The worst of the people is a man who is double-faced; he presents one face to some and another to others.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            }
+                            ,
                             {
                                 type: "commentary",
                                 text: "He was also fine with the murder of women and children, simply because they were pagan:"
@@ -3201,6 +3499,89 @@
                                 text: "oh prophet why do you forbid yourself hadith, quran 66:1, quran 66:5"
                             },
                         ]
+                    },
+                    "odd_character": {
+                        title: "Muhammad's odd character",
+                        introduction: "Muhammad, being the most important prophet for Islam surely had an odd character.",
+                        sources: [
+                            {
+                                type: "hadith",
+                                title: "Sahih al-Bukhari 6102",
+                                grading: "Sahih (Authentic)",
+                                text: "The Prophet (ﷺ) was more shy than a virgin in her separate room. And if he saw a thing which he disliked, we would recognize that (feeling) in his face."
+                            },
+                            {
+                                type: "hadith",
+                                title: "Sahih al-Bukhari 6119",
+                                grading: "Sahih (Authentic)",
+                                text: "The Prophet (ﷺ) was more shy (from Haya': pious shyness from committing religeous indiscretions) than a veiled virgin girl. (See Hadith No. 762, Vol. 4)"
+                            },
+                            {
+                                type: "hadith",
+                                title: "Sahih Muslim 2320",
+                                grading: "Sahih (Authentic)",
+                                text: "Abu Sa'id Khudri reported that Allah's Messenger (ﷺ) was more modest than the virgin behind the curtain (or in the apartment), and when he disliked anything, we recognised that from his face."
+                            },
+                            
+                            {
+                                type: "hadith",
+                                title: "Sahih al-Bukhari 3019",
+                                grading: "Sahih (Authentic)",
+                                text: "I heard Allah's Messenger (ﷺ) saying, 'An ant bit a Prophet amongst the Prophets, and he ordered that the place of the ants be burnt. So, Allah inspired to him, 'It is because one ant bit you that you burnt a nation amongst the nations that glorify Allah?'"
+                            },
+                            {
+                                type: "hadith",
+                                title: "Sahih al-Bukhari 3319",
+                                grading: "Sahih (Authentic)",
+                                text: "Allah's Messenger (ﷺ) said, 'Once while a prophet amongst the prophets was taking a rest underneath a tree, an ant bit him. He, therefore, ordered that his luggage be taken away from underneath that tree and then ordered that the dwelling place of the ants should be set on fire. Allah sent him a revelation:-- 'Wouldn't it have been sufficient to burn a single ant? (that bit you): (See Page 162, chapter No. 153)."
+                            },
+                            {
+                                type: "commentary",
+                                text: "I think Muhammad had anger problems. (see also Sahih Muslim 2241a, Sunan Abi Dawud 5265 that report the same incident)"
+                            },
+                            
+
+                            {
+                                type: "commentary",
+                                text: "Not really a character thing, but Muhammad was also pretty dirty"
+                            },
+                            {
+                                type: "hadith",
+                                title: "Sunan Abi Dawud 3080",
+                                grading: "Sahih (Authentic)",
+                                text: "Narrated Zaynab: She was picking lice from the head of the Messenger of Allah (ﷺ) while the wife of Uthman ibn Affan and the immigrant women were with him. They complained about their houses that they had been narrowed down to them and they were evicted from them. The Messenger of Allah (ﷺ) ordered that the houses of the Immigrants should be given to their wives. Thereafter Abdullah ibn Mas'ud died, and his wife inherited his house in Medina."
+                            },
+                            {
+                                type: "hadith",
+                                title: "",
+                                grading: "Sahih (Authentic)",
+                                text: ""
+                            },
+                            {
+                                type: "hadith",
+                                title: "",
+                                grading: "Sahih (Authentic)",
+                                text: ""
+                            },
+                            {
+                                type: "hadith",
+                                title: "",
+                                grading: "Sahih (Authentic)",
+                                text: ""
+                            },
+                            {
+                                type: "hadith",
+                                title: "",
+                                grading: "Sahih (Authentic)",
+                                text: ""
+                            },
+                            {
+                                type: "hadith",
+                                title: "",
+                                grading: "Sahih (Authentic)",
+                                text: ""
+                            },
+                        ]
                     }
                 
                 }
@@ -3365,6 +3746,31 @@
                                 type: "commentary",
                                 text: "This verse does also not appear in the Quran today, hence it was probably forgotten as well."
                             },
+                            {
+                                title: "Sunan Abi Dawud 1331",
+                                text: "A man got up at night and recited the Qur'an in a loud voice. When the dawn came, the Messenger of Allah (ﷺ) said: May Allah have mercy on so-and-so who reminded me many verses that I had nearly forgotten. Abu Dawud said: Harun al-Nahwi transmitted from Hammad b. Salamah the Quranic verse of Surah Al-'Imran: 'How many of the prophet fought (in Allah's way)' (3:146)",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sunan Abi Dawud 3970",
+                                text: "A man got up (for prayer) at night, he read the Qur'an and raised his voice in reading. When the morning came, the Messenger of Allah (ﷺ) said: May Allah have mercy on so-and-so! Last night he reminded me a number of verses which I was about to forget.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih Muslim 788a",
+                                text: "'A'isha reported that the Messenger of Allah (ﷺ) heard a person reciting the Qur'an at night. Upon this he said: May Allah show mercy to him; he has reminded me of such and such a verse which I had missed in such and such a surah.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            {
+                                title: "Sahih Muslim 790b",
+                                text: "Keep refreshing your knowledge of the sacred books (or always renew your knowledge of these sacred books) and sometimes he would mention the Qur'an for it is more apt to escape from men's minds than animals which are hobbled, and the Messenger of Allah (ﷺ) said: None of you should say: I forgot such and such a verse, but he has been made to forget.",
+                                type: "hadith",
+                                grading: "Sahih (Authentic)"
+                            },
+                            
                             {
                                 title: "Sunan Ibn Majah 1944",
                                 text: "“The Verse of stoning and of breastfeeding an adult ten times was revealed, and the paper was with me under my pillow. When the Messenger of Allah died, we were preoccupied with his death, and a tame sheep came in and ate it.”",
@@ -6241,7 +6647,6 @@
             }
       
        
-       
         }
         // Generate navigation menu
         function generateNavigation() {
@@ -6256,7 +6661,7 @@
                 
                 const arrow = document.createElement('span');
                 arrow.className = 'nav-arrow';
-                arrow.textContent = '▶';
+                arrow.textContent = '';
                 
                 navItem.appendChild(titleSpan);
                 navItem.appendChild(arrow);
@@ -6670,7 +7075,7 @@
             const likesSection = document.createElement('div');
             likesSection.className = 'likes-section';
             likesSection.innerHTML = `
-                <button class="like-button" title="Like this article">👍</button>
+                <button class="like-button" title="Like this article">Like</button>
                 <span class="like-count">0</span> likes
             `;
             section.appendChild(likesSection);
