@@ -1413,7 +1413,7 @@
                 }
             },
            
-              "mistakes": {
+                "mistakes": {
                 title: "Mistakes & Nonsense",
                 subTopics: {
 
@@ -7823,6 +7823,7 @@
             }
       
        
+       
         }
         // Generate navigation menu
         function generateNavigation() {
@@ -8084,24 +8085,24 @@
         function showContent(sectionId, subSectionId) {
             // Hide welcome section
             document.getElementById('welcome').style.display = 'none';
-            
+
             // Hide all content sections
             document.querySelectorAll('.content-section').forEach(section => {
                 section.style.display = 'none';
             });
-            
+
             // Show selected section
             const targetId = `${sectionId}-${subSectionId}`;
             const targetSection = document.getElementById(targetId);
             if (targetSection) {
                 targetSection.style.display = 'block';
             }
-            
+
             // Update navigation active state
             document.querySelectorAll('.sub-nav-item').forEach(item => {
                 item.classList.remove('active');
             });
-            
+
             // Find and activate the clicked sub-nav item
             const subMenu = document.getElementById(`sub-${sectionId}`);
             if (subMenu) {
@@ -8111,6 +8112,12 @@
                 if (targetIndex >= 0 && subNavItems[targetIndex]) {
                     subNavItems[targetIndex].classList.add('active');
                 }
+            }
+
+            // Update URL hash without triggering page reload
+            const hash = `#${sectionId}-${subSectionId}`;
+            if (window.location.hash !== hash) {
+                history.replaceState(null, null, hash);
             }
         }
 
@@ -8345,11 +8352,38 @@
             document.querySelectorAll('.content-section').forEach(section => ensureCommentsUI(section));
         }
 
+        // Parse URL hash and show appropriate content
+        function handleUrlHash() {
+            const hash = window.location.hash.substring(1); // Remove the '#'
+            if (hash) {
+                const parts = hash.split('-', 2); // Split into section and subsection
+                if (parts.length === 2) {
+                    const sectionId = parts[0];
+                    const subSectionId = parts.slice(1).join('-'); // Rejoin in case subsection has dashes
+
+                    // Check if the section and subsection exist
+                    if (contentDatabase[sectionId] && contentDatabase[sectionId].subTopics[subSectionId]) {
+                        showContent(sectionId, subSectionId);
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        // Handle browser back/forward navigation
+        window.addEventListener('popstate', function() {
+            handleUrlHash();
+        });
+
         // Initialize the website
         document.addEventListener('DOMContentLoaded', function() {
             generateNavigation();
             generateContentSections();
             initCommentsForAllSections();
+
+            // Check URL hash on page load
+            handleUrlHash();
         });
     </script>
 </body>
