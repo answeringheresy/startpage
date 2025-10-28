@@ -88,6 +88,38 @@
             border-left-color: white;
         }
 
+        .nav-item.disclaimer {
+            background-color: #680761;
+        }
+
+        .nav-item.disclaimer:hover {
+            background-color: #900669;
+        }
+
+        .nav-item.quotes {
+            background-color: #0b3d91;
+        }
+
+        .nav-item.quotes:hover {
+            background-color: #0e4cab;
+        }
+
+        .nav-item.hadiths {
+            background-color: #a94700;
+        }
+
+        .nav-item.hadiths:hover {
+            background-color: #cc5a00;
+        }
+
+        .nav-item.jesus_messiah {
+            background-color: #b8860b;
+        }
+
+        .nav-item.jesus_messiah:hover {
+            background-color: #d4a017;
+        }
+
         .sub-menu {
             display: none;
             background-color: rgba(0,0,0,0.1);
@@ -112,6 +144,83 @@
         }
 
         .sub-nav-item.active {
+            background-color: rgba(255,255,255,0.15);
+            font-weight: bold;
+        }
+
+        
+
+
+        
+
+        .sub-menu.disclaimer {
+            background-color: rgba(102, 7, 210, 0.1);
+            border-left: 3px solid #ffffff;
+        }
+
+        .sub-menu.quotes {
+            background-color: rgba(11, 61, 145, 0.2);
+            border-left: 3px solid #ffffff;
+        }
+
+        .sub-nav-item.disclaimer {
+            background-color: #4f0234;
+        }
+
+        .sub-nav-item.disclaimer:hover {
+            background-color: #6e0449;
+        }
+
+        .sub-nav-item.disclaimer.active {
+            background-color: rgba(255,255,255,0.15);
+            font-weight: bold;
+        }
+
+        .sub-nav-item.quotes {
+            background-color: #092a68;
+        }
+
+        .sub-nav-item.quotes:hover {
+            background-color: #0d3a86;
+        }
+
+        .sub-nav-item.quotes.active {
+            background-color: rgba(255,255,255,0.15);
+            font-weight: bold;
+        }
+
+        .sub-menu.hadiths {
+            background-color: rgba(169, 71, 0, 0.2);
+            border-left: 3px solid #ffffff;
+        }
+
+        .sub-nav-item.hadiths {
+            background-color: #6d2f00;
+        }
+
+        .sub-nav-item.hadiths:hover {
+            background-color: #8a3b00;
+        }
+
+        .sub-nav-item.hadiths.active {
+            background-color: rgba(255,255,255,0.15);
+            font-weight: bold;
+        }
+
+        .sub-menu.jesus_messiah {
+            background-color: rgba(184, 134, 11, 0.2);
+            border-left: 3px solid #ffffff;
+        }
+
+        .sub-nav-item.jesus_messiah {
+            background-color: #8f6a09;
+        }
+
+        .sub-nav-item.jesus_messiah:hover {
+            background-color: #a87f0b;
+        }
+
+        .sub-nav-item.jesus_messiah.active {
             background-color: rgba(255,255,255,0.15);
             font-weight: bold;
         }
@@ -312,6 +421,24 @@
             font-style: italic;
         }
 
+        /* colors */ 
+
+       
+        blue {
+            color: blue;
+        }
+        
+        red {
+            color: red;
+        }
+        
+        green {
+            color: green;
+        }
+
+     
+        
+
         /* Commentary Styles */
         .commentary {
             font-size: 16px;
@@ -423,7 +550,7 @@
             <!-- Welcome Section -->
             <div id="welcome" class="welcome-section">
                 <h1>Welcome</h1>
-                <p>Explore the different sections using the navigation menu on the left (or at the bottom) to learn about Islam. Each section contains a different topic with Islamic sources and my commentary.</p>
+                <p>Explore the different sections using the navigation menu on the left (or at the bottom) to learn about Islam. Each section contains a different topic with Islamic sources and my commentary. SITE NOT FINISHED</p>
             </div>
 
             <!-- Dynamic Content Sections -->
@@ -474,6 +601,10 @@
                 }
                 else if (title.toLowerCase().includes('as-salihin') && match) {
                     return `https://sunnah.com/riyadussalihin:${match[1]}`;
+                }
+
+                else if (title.toLowerCase().includes('al-masabih') && match) {
+                    return `https://sunnah.com/mishkat:${match[1]}`;
                 }
             }
             else if (sourceUrl) {
@@ -644,7 +775,7 @@
 
 
 
-            "teachings_on_women": {
+            "views_women": {
                 title: "Views on Women",
                 subTopics: {
                     "women_inferior": {
@@ -742,10 +873,10 @@
 
 
 
-                            {
-                                type: "commentary",
-                                text: "This shows that the woman is to obey her husband at all times and that men are generally understood to be superior to women. Men can wish for sex whenever they want and the wife cannot refuse."
-                            },
+                            // {
+                            //     type: "commentary",
+                            //     text: "This shows that the woman is to obey her husband at all times and that men are generally understood to be superior to women. Men can wish for sex whenever they want and the wife cannot refuse."
+                            // },
 
                             
                         ]
@@ -908,7 +1039,7 @@
                             },
                             {
                                 type: "commentary",
-                                text: "These hadiths illustrate how polygamy (the marriage to multiple partners, in this case women) is allowed and was a common practice in early Islam, because the Quran says you can have up to 4 wives at a time. Muhammad himself had 9 wives once. The reason for such favorism is discussed in the chapter 'Muhammads Character'. Nonetheless, despite many modern muslims today denying the fact that you can have multiple women, Muhammad himself told the convert to select four of his eight wives, and divorce the rest. If polygamy was only allowed to care for women in need, why does Muhammad tell the man to divorce four, and keep four? If the women were in need, four of them would have lost their basis of living. if the women weren't in need, it means Islam endorses polygamy, which is the more probable explanation."
+                                text: "These hadiths illustrate how polygamy (the marriage to multiple partners, in this case women) is allowed and was a common practice in early Islam (and even today), because the Quran says you can have up to 4 wives at a time. Muhammad himself had 9 wives at once at his maximum. The reason for such favorism is discussed in 'Muhammad' --> 'Allah's suspicious favoritism for Muhammad'. Nonetheless, despite many modern muslims today denying the fact that you can have multiple women, Muhammad himself told the convert to select four of his eight wives, and divorce the rest. If polygamy was only allowed to care for women in need, why does Muhammad tell the man to divorce four, and keep four? If the women were in need, four of them would have lost everything. if the women weren't in need, it means Islam endorses polygamy, which is the more probable explanation."
                             }
                         ]
                     },
@@ -953,7 +1084,7 @@
                             },
                             {
                                 type: "commentary",
-                                text: "The verse in the Quran:"
+                                text: "The verse in the Quran (more on that in 'Muhammad' --> 'Allah's suspicious favoritism for Muhammad'):"
 
                             },
                             {
@@ -969,7 +1100,7 @@
                             },
                             {
                                 
-                                text: "This shows that despite the fact that the women had husbands, they were allowed to be raped by their captors under the permission of Allah. This could not have been consential, as it is highly unlikely that a married woman who was just taken captive would sleep with her captor. The women also said 'I have a husband' in one of the narrations, implying that she does not want to have sex with this man. Yet it was Allah who allowed it to happen, therefore actively supporting rape.<br><br>Some muslims may say that this is only possible if the woman consents, but we have no authentic narration supporting this claim. Furthermore, it is highly unlikely even 1% of women who have husbands would voluntarily sleep with their captor, yet it happened here in these hadiths. What are the odds for multiple MARRIED women to cheat on their husband by sleeping with the man that had just possibly slaughtered her family and raided her village? ",
+                                text: "This shows that despite the fact that the women had husbands, they were allowed to be raped by their captors under the permission of Allah. This could not have been consential, as it is highly unlikely that a married woman who was just taken captive would sleep with her captor. The women also said 'I have a husband' in one of the narrations, implying that she does not want to have sex with this man. Yet it was Allah who allowed it to happen, therefore actively supporting rape.<br><br>Some muslims may say that this is only possible if the woman consents, but we have no authentic narration supporting this claim. Furthermore, it is highly unlikely even 1% of women who have husbands would voluntarily sleep with their captor, yet it happened here in these hadiths. What are the odds for multiple MARRIED women cheating on their husband by sleeping with the man that had just possibly slaughtered her entire family and raided her village? ",
                                 type: "commentary",
 
                             },
@@ -1182,7 +1313,7 @@
                     
                     "aisha": {
                         title: "Marriage to Aisha",
-                        introduction: "Was Aisha really 9? According to many modern muslims she wasn't, but the most authentic islamic hadiths regarding her age say otherwise. She was in fact 9 years old when Muhammad married her. We can also examine that she was prepubescent and not fit in any way to be married to a grown man and have sex with him.",
+                        introduction: "Was Aisha really 9? According to many modern muslims she wasn't, but the most authentic islamic hadiths regarding her age all say otherwise. She was in fact 9 years old when Muhammad married her. We can also examine that she was prepubescent and not fit in ANY way to be married to a grown man.",
                         sources: [
                             
                             {
@@ -1412,8 +1543,8 @@
                     }
                 }
             },
-           
-                "mistakes": {
+             
+            "mistakes": {
                 title: "Mistakes & Nonsense",
                 subTopics: {
 
@@ -2109,7 +2240,7 @@
                             {
 
                                 title: "Quran 19:63-72",
-                                text: "That is Paradise which <strong>WE</strong> shall give as an inheritance to those of OUR servants who are godfearing. <strong>WE come not down, <u>save at the commandment of thy Lord.</u></strong> To Him belongs all that is before <strong>US</strong>, and all that is behind <strong>US</strong>, and all between that. And thy Lord is never forgetful, Lord He of the heavens and earth and all that is between them. <strong>So serve Him, and be thou patient in His service;</strong> knowest thou any that can be named with His Name? Man says, ‘What, when I am dead shall I then be brought forth alive?’ Will not man remember that <strong>WE</strong> created him aforetime, when he was nothing? <strong>Now, by thy Lord, WE shall surely muster them, and the Satans, then WE shall parade them about Gehenna hobbling on their knees.</strong> Then <strong>WE</strong> shall pluck forth from every party whichever of them was the most hardened in disdain of the All-merciful; then <strong>WE</strong> shall know very well those most deserving to burn there. Not one of you there is, but he shall go down to it; that for thy Lord is a thing decreed, determined. Then <strong>WE</strong> shall deliver those that were godfearing; and the evildoers <strong>WE</strong> shall leave there, hobbling on their knees.",
+                                text: "That is Paradise which <strong>WE</strong> shall give as an inheritance to those of <strong>OUR</strong> servants who are godfearing. <strong>WE come not down, <u>save at the commandment of thy Lord.</u></strong> To Him belongs all that is before <strong>US</strong>, and all that is behind <strong>US</strong>, and all between that. And thy Lord is never forgetful, Lord He of the heavens and earth and all that is between them. <strong>So serve Him, and be thou patient in His service;</strong> knowest thou any that can be named with His Name? Man says, ‘What, when I am dead shall I then be brought forth alive?’ Will not man remember that <strong>WE</strong> created him aforetime, when he was nothing? <strong>Now, by thy Lord, WE shall surely muster them, and the Satans, then WE shall parade them about Gehenna hobbling on their knees.</strong> Then <strong>WE</strong> shall pluck forth from every party whichever of them was the most hardened in disdain of the All-merciful; then <strong>WE</strong> shall know very well those most deserving to burn there. Not one of you there is, but he shall go down to it; that for thy Lord is a thing decreed, determined. Then <strong>WE</strong> shall deliver those that were godfearing; and the evildoers <strong>WE</strong> shall leave there, hobbling on their knees.",
                                 type: "quran"
                             },
                             {
@@ -2120,7 +2251,8 @@
 
                             {
                                 title: "Ibn Abbas commentary on 19:64",
-                                text: "(We (angels) come not down) from heaven (save by commandment of thy Lord) O Muhammad. Gabriel said this when Allah withheld the revelation from him for a while after being asked by the Quraysh about the spirit, the two-horned (Dhu'l-Qarnayn) and the people of the Cave. (Unto Him belongeth all that is before us) of the matter of the Hereafter (and all that is behind us) of the matter of this worldly life (and all that is between those two) between the two blowings of the Trumpet, (and thy Lord was never forgetful) your Lord has not forgotten you since He first sent you the Revelation."
+                                text: "(We (angels) come not down) from heaven (save by commandment of thy Lord) O Muhammad. Gabriel said this when Allah withheld the revelation from him for a while after being asked by the Quraysh about the spirit, the two-horned (Dhu'l-Qarnayn) and the people of the Cave. (Unto Him belongeth all that is before us) of the matter of the Hereafter (and all that is behind us) of the matter of this worldly life (and all that is between those two) between the two blowings of the Trumpet, (and thy Lord was never forgetful) your Lord has not forgotten you since He first sent you the Revelation.",
+                                type: "other"
                             },
                             {
                                 type: "commentary",
@@ -2144,7 +2276,7 @@
                             {
 
                                 title: "Quran 22:6-7",
-                                text: "That is because <strong>Allah< is the Truth</strong> and because He gives life to the dead and because He is over all things competent And [that they may know] that the Hour is coming - no doubt about it - <strong>and that Allah will resurrect those</strong> in the graves.",
+                                text: "That is because <strong>Allah is the Truth</strong> and because He gives life to the dead and because He is over all things competent And [that they may know] that the Hour is coming - no doubt about it - <strong>and that Allah will resurrect those</strong> in the graves.",
                                 type: "quran"
                             },
                             {
@@ -3062,7 +3194,8 @@
                     }
                 }
             },
-            "muhammad": {
+            
+             "muhammad": {
                 title: "Muhammad",
                 subTopics: {
                     "prophethood": {
@@ -3292,7 +3425,7 @@
                               
                             {
                                 type: "commentary",
-                                text: "Muhammad ordered the killings of people and that they are tortured, killed and tortured people himself, cursed people (among them an orphan girl making her cry), imposed insanely harsh punishemnts on people, was fine with killing pagan women and children, ordered the killings of apostates, and ordered the killings of animals (he also beat and insulted women and exploited a 9 year old girl, more on that in 'Teachings on Women'): "
+                                text: "Muhammad ordered the killings of people and that they are tortured, killed and tortured people himself, cursed people (among them an orphan girl making her cry), imposed insanely harsh punishments on people, was fine with killing pagan women and children, ordered the killings of apostates, and ordered the killings of animals (he also beat and insulted women and exploited a 9 year old girl, more on that in 'Teachings on Women'): "
                             },
                             {
                                 type: "commentary",
@@ -4045,7 +4178,85 @@
 
                             {
                                 type: "commentary",
-                                text: "Not really a character thing, but Muhammad was also pretty dirty"
+                                text: "Not really a character thing, but funny regardless"
+                            },
+                            {
+                                type: "hadith",
+                                title: "Sunan Abi Dawud 3080",
+                                grading: "Sahih (Authentic)",
+                                text: "Narrated Zaynab: She was picking lice from the head of the Messenger of Allah (ﷺ) while the wife of Uthman ibn Affan and the immigrant women were with him. They complained about their houses that they had been narrowed down to them and they were evicted from them. The Messenger of Allah (ﷺ) ordered that the houses of the Immigrants should be given to their wives. Thereafter Abdullah ibn Mas'ud died, and his wife inherited his house in Medina."
+                            },
+                            {
+                                type: "hadith",
+                                title: "",
+                                grading: "Sahih (Authentic)",
+                                text: ""
+                            },
+                            {
+                                type: "hadith",
+                                title: "",
+                                grading: "Sahih (Authentic)",
+                                text: ""
+                            },
+                            {
+                                type: "hadith",
+                                title: "",
+                                grading: "Sahih (Authentic)",
+                                text: ""
+                            },
+                            {
+                                type: "hadith",
+                                title: "",
+                                grading: "Sahih (Authentic)",
+                                text: ""
+                            },
+                            {
+                                type: "hadith",
+                                title: "",
+                                grading: "Sahih (Authentic)",
+                                text: ""
+                            },
+                        ]
+                    }
+                     
+                    ,"death": {
+                        title: "Muhammad's embarassing death",
+                        introduction: "How did Muhammad die? A Jewish woman whose family Muhammad had just slaughtered offered him a meal, and he ACTUALLY accepted it. Muhammad then died in the exact same way the Quran said he was going to die if he was a false prophet making things up",
+                        sources: [
+
+                            {
+                                type: "commentary",
+                                text: "Muhammad's death:"
+                            },
+                            {
+
+                                type: "hadith",
+                                title: "Sahih al-Bukhari 6102",
+                                grading: "Sahih (Authentic)",
+                                text: "The Prophet (ﷺ) was more shy than a virgin in her separate room. And if he saw a thing which he disliked, we would recognize that (feeling) in his face."
+                            },
+                            {
+                                type: "hadith",
+                                title: "Sahih al-Bukhari 6119",
+                                grading: "Sahih (Authentic)",
+                                text: "The Prophet (ﷺ) was more shy (from Haya': pious shyness from committing religeous indiscretions) than a veiled virgin girl. (See Hadith No. 762, Vol. 4)"
+                            },
+                            {
+                                type: "hadith",
+                                title: "Sahih Muslim 2320",
+                                grading: "Sahih (Authentic)",
+                                text: "Abu Sa'id Khudri reported that Allah's Messenger (ﷺ) was more modest than the virgin behind the curtain (or in the apartment), and when he disliked anything, we recognised that from his face."
+                            },
+                            
+                            // {
+                            //     type: "commentary",
+                            //     text: "I think Muhammad had anger problems. (see also Sahih Muslim 2241a, Sunan Abi Dawud 5265 that report the same incident)"
+                            // },
+                            
+
+                            {
+                                type: "commentary",
+                                text: "Not really a character thing, but funny regardless"
                             },
                             {
                                 type: "hadith",
@@ -4602,7 +4813,7 @@
                             }, // google online more differences + online where you can switch versions
                             {
                                 type: "commentary",
-                                text: "- () -"
+                                text: "-"
                             },
                             {
                                 title: "Imam Hafs Quran 2:125",
@@ -4648,14 +4859,11 @@
                 title: "Islam the Copycat",
                 subTopics: {
                     
-                    "muhammad_plagiarizing": {
-                        title: "Muhammad plagiarizing from others",
-                        introduction: "Here are Hadiths where Muhammad blatantly copies from people that surrounded him:",
+                    "short_intro": {
+                        title: "Short Introduction",
+                        introduction: "Very often Muhammad was accused of simply copying ancient fables and adding them into the quran as well plagiarizing from others. In this chapter we will examine whether this claim is holds truth:",
                         sources: [
-                            {
-                               type: "commentary",
-                               text: "Very often Muhammad was accused of simply copying ancient fables and adding them into the quran as well plagiarizing from others:",
-                            },
+                           
                              {
                                title: "Quran 25:4-5",
                                text: "<strong>The disbelievers say, 'This ˹Quran˺ is nothing but a fabrication which he made up with the help of others.'</strong> Their claim is totally unjustified and untrue! <strong>And they say, 'Legends of the former peoples which he has written down, and they are dictated to him morning and afternoon.'</strong>",
@@ -4704,9 +4912,75 @@
                             },
                             {
                                type: "commentary",
-                               text: "Is this true? Let's find out!",
+                               text: "Is this true? Let's find out! Read the following chapters.",
                                
                             },
+                      
+                            
+                            
+                        ]
+                    },
+                    
+                    
+                    "muhammad_plagiarizing": {
+                        title: "Muhammad plagiarizing from others",
+                        introduction: "Here are Hadiths where Muhammad blatantly copies from people that surrounded him:",
+                        sources: [
+                            // {
+                            //    type: "commentary",
+                            //    text: "Very often Muhammad was accused of simply copying ancient fables and adding them into the quran as well plagiarizing from others:",
+                            // },
+                            //  {
+                            //    title: "Quran 25:4-5",
+                            //    text: "<strong>The disbelievers say, 'This ˹Quran˺ is nothing but a fabrication which he made up with the help of others.'</strong> Their claim is totally unjustified and untrue! <strong>And they say, 'Legends of the former peoples which he has written down, and they are dictated to him morning and afternoon.'</strong>",
+                            //    type: "quran"
+                            // },
+                            // {
+                            //    title: "Quran 6:25",
+                            //    text: "Even if they were to see every sign, they still would not believe in them. The disbelievers would ˹even˺ come to argue with you, saying, <strong>'This ˹Quran˺ is nothing but ancient fables!'</strong>",
+                            //    type: "quran"
+                            // },
+                            // {
+                            //    title: "Quran 8:31",
+                            //    text: "Whenever Our revelations are recited to them, they challenge ˹you˺, 'We have already heard ˹the recitation˺. If we wanted, we could have easily produced something similar. <strong>This ˹Quran˺ is nothing but ancient fables!'</strong>",
+                            //    type: "quran"
+                            // },
+                            // {
+                            //    title: "Quran 16:24",
+                            //    text: "And when it is said to them, 'What has your Lord revealed?' <strong>They say, 'Ancient fables!'</strong>",
+                            //    type: "quran"
+                            // },
+                            // {
+                            //    title: "Quran 23:82-83",
+                            //    text: "They said, 'Once we are dead and reduced to dust and bones, will we really be resurrected? We have already been promised this, as well as our forefathers earlier. <strong>This is nothing but ancient fables!'</strong>",
+                            //    type: "quran"
+                            // },
+                            // {
+                            //     title: "Quran 9:61",
+                            //     text: "And among them are those who abuse the Prophet and say, 'He is an ear.' Say, '[It is] an ear of goodness for you that believes in Allah and believes the believers and [is] a mercy to those who believe among you.' And those who abuse the Messenger of Allah - for them is a painful punishment."
+                            //     , type: "quran"
+                            // },
+                            // {
+                            //     type: "commentary",
+                            //     text: "People called him an 'ear' because he listened to ANYONE."
+                            // },
+
+
+                            // {
+                            //    title: "Quran 9:61 - Muhammad Sarwar",
+                            //    text: "<strong>Some of them speak ill of the Prophet, saying, 'He listens to everything and believes what he hears.''</strong>",
+                            //    type: "quran"
+                            // },
+                            // {
+                            //    title: "Quran 9:61 - Qaribullah",
+                            //    text: "<strong>And there are others among them who hurt the Prophet saying: 'He lends an ear (to everything)' Say: 'He lends an ear of good for you; he believes in Allah and trusts the believers, and he is a mercy to the believers among you. Those who hurt the Messenger of Allah for them there is a painful punishment'</strong>",
+                            //    type: "quran"
+                            // },
+                            // {
+                            //    type: "commentary",
+                            //    text: "Is this true? Let's find out!",
+                               
+                            // },
                             {
                                title: "Sahih Muslim 584",
                                text: "The Prophet (ﷺ) entered my house when a Jewess was with me and she was saying: Do you know that you would be put to trial in the grave? The Messenger of Allah (ﷺ) trembled (on hearing this) and said: It is the Jews only who would-be put to trial. 'A'isha said: We passed some nights and then the Messenger of Allah (ﷺ) said: Do you know that it has been revealed to me:' You would be put to trial in the grave'? 'A'isha said: 1 heard the Messenger of Allah (ﷺ) seeking refuge from the torment of the grave after this.",
@@ -4772,6 +5046,8 @@
                             
                         ]
                     },
+                    
+                    
                     "stories_copied": {
                         title: "Quran copies ancient fables and stories",
                         introduction: "When reading the Quran and its stories, muslims believe these stories come directly from God. But when we investigate this a little further, we see that much of the contents of the Quran seem to have been copied from common non-scriptural stories circulating around in 7th century arabia, which creates some serious suspicion about where the Quran really got its stories from: from God or just from Muhammad's surroundings? Let's compare the passages from the Quran to various religious texts at Muhammad's time.",
@@ -5154,7 +5430,11 @@
                                 type: "image",
                                 size: "medium",
                                 caption: ""
-                            }
+                            },
+
+                            {
+                                type: "commentary",
+                                text: "[Here](https://www.tiktok.com/@davxchrist/photo/7562567073826606358?is_from_webapp=1&sender_device=pc&web_id=7512111855261058583) a video about it on my TikTok channel"                            },
                         
 
                             
@@ -5235,7 +5515,7 @@
 
 
 
-            "Jesus_in_quran": {
+            "Jesus": {
                 title: "Who is Jesus?",
                 subTopics: {
                     "Jesusgreaterthanmuhammad": {
@@ -5842,7 +6122,7 @@
 
                             {
                                 type: "commentary",
-                                text: "So to conclude:<br><br>1. Jesus is called the word of Allah that was cast into Mary, meaning Jesus existed before he took on human flesh<br>2. Jesus can also create beings<br>3. Jesus was taken up to where Allah is<br>4. Jesus will return and judge all of humanity<br><br>And all of these abilities belong to Allah alone, thus the Quran, by accident, made Jesus God."
+                                text: "So to conclude:<br><br>1. Jesus is called the word of Allah that was cast into Mary, meaning Jesus existed before he took on human flesh<br>2. Jesus can create beings<br>3. Jesus was taken up to where Allah is<br>4. Jesus will return and judge all of humanity<br><br>And all of these abilities belong to Allah alone, thus the Quran, by accident, made Jesus God."
                             },
                             // {
                             //     title: "",
@@ -5878,7 +6158,7 @@
                 }
             },
            
-            "arguments_against_islam": {
+            "arg_against_islam": {
                 title: "Arguments against Islam",
                 subTopics: {
                     
@@ -6421,7 +6701,7 @@
                             
                             {
                                 type: "commentary",
-                                text: "Renowned New Testament scholar Bart Ehrman states:"
+                                text: "Renowned New Testament scholar Bart Ehrman:"
                             },
                             {
                                 title: "Bart D. Ehrman ",
@@ -6429,7 +6709,7 @@
                             },
                             {
                                 type: "commentary",
-                                text: "Historian and co-founder of the Jesus Seminar, John Dominic Crossan asserts:"
+                                text: "Historian and co-founder of the Jesus Seminar, John Dominic Crossan:"
                             },
                             {
                                 title: "John Dominic Crossan",
@@ -6437,7 +6717,7 @@
                             },
                             {
                                 type: "commentary",
-                                text: "Esteemed New Testament scholar James D. G. Dunn emphasizes:"
+                                text: "Esteemed New Testament scholar James D. G. Dunn:"
                             },
                             {
                                 title: "James D. G. Dunn",
@@ -6445,7 +6725,7 @@
                             },
                             {
                                 type: "commentary",
-                                text: "And influential scholar E. P. Sanders notes:"
+                                text: "And influential scholar E. P. Sanders:"
                             },                            
                             {
                                 title: "E. P. Sanders",
@@ -6673,7 +6953,7 @@
 
             
             "arg_for_islam": {
-                title: "Arguments for Islam - Refuted",
+                title: "Arguments for Islam - Discussed",
                 subTopics: {
                     
                
@@ -7423,7 +7703,7 @@
                             {
                                 title: "Zechariah 12:10",
                                 type: "bibleot",
-                                text: "<strong>The Lord,</strong> who stretches out the heavens, who lays the foundation of the earth, and who forms the human spirit within a person, <strong>declares:</strong> [...] “And I will pour out on the house of David and the inhabitants of Jerusalem a spirit[a] of grace and supplication. <strong>They will look on me, the one they have pierced,</strong> and they will mourn for him as one mourns for an only child, and grieve bitterly for him as one grieves for a firstborn son."
+                                text: "<strong>The Lord,</strong> who stretches out the heavens, who lays the foundation of the earth, and who forms the human spirit within a person, <strong>declares:</strong> [...] “And I will pour out on the house of David and the inhabitants of Jerusalem a spirit of grace and supplication. <strong>They will look on me, the one they have pierced,</strong> and they will mourn for him as one mourns for an only child, and grieve bitterly for him as one grieves for a firstborn son."
                             },
                             {
                                 type: "commentary",
@@ -8080,7 +8360,7 @@
                             text: "Here Jesus says he will die for mankind, making it possible for man to enter heaven. That's exactly what he explained earlier, with man it is impossible, but not with God. Who but God could give his life as a ransom for many?"
                         },
                         {
-                            type: "bible",
+                            type: "bibleot",
                             title: "Psalm 49:7-9",
                             text: "Truly no man can ransom another, or give to God the price of his life, for the ransom of their life is costly and can never suffice, that he should live on forever and never see the pit."
                         },
@@ -8243,9 +8523,508 @@
            
             },
             
+            "Jesus_messiah": {
+                title: "Jesus the Messiah",
+                subTopics: {
+                    "basis": {
+                        title: "Jesus as the promised Messiah",
+                        introduction: "The Old Testament repeatedly speaks of an 'anointed one' and prophesizes a specific individual. This individual would save the world and do numerous of other things. Almost no prophecy, which Jesus fulfilled, works for Islam. Whether it be the crucifixion and the suffering of the Messiah, or God coming to earth, or the Messiah being the bringer of the eternal covenant, none of it is compatible with Islam.",
+                        sources: [
+
+                            {
+                                type: "commentary",
+                                text: "Let's look into it all: who is the Messiah? Does Jesus fulfill the prophecies? Is Jesus the true Messiah?"
+                            },
+
+                            {
+                                type: "commentary",
+                                text: "1. The Messiah: God coming to earth?"
+                            },                            
+                            {
+                                type: "commentary",
+                                text: "A lot of this has already been covered in 'Common Objections' --> 'Trinity & the divinity of Jesus', but we will investigate it further and on a deeper level here. So let's start:"
+                            },
+
+                            {
+                                type: "commentary",
+                                text: "1.1 God to be born"
+                            },
+
+
+                            {
+                                title: "Isaiah 7:14",
+                                type: "bibleot",
+                                text: "Therefore the Lord himself will give you a sign: The virgin will conceive <strong>and give birth to a son, and will call him Immanuel ['God with us'].</strong>"
+                            },
+                            {
+                                title: "Isaiah 9:6-7",
+                                type: "bibleot",
+                                text: "For to us <strong>a child is born, to us a son is given,</strong> and the government will be on his shoulders. And he will be called Wonderful Counselor, <strong>Mighty God, Everlasting Father,</strong> Prince of Peace. Of the greatness of his government and peace <strong>there will be no end.</strong> He will reign on David’s throne and over his kingdom, establishing and upholding it with justice and righteousness <strong>from that time on and forever.</strong> The zeal of the Lord Almighty will accomplish this."
+                            },
+                            {
+                                title: "Micah 5:2",
+                                type: "bibleot",
+                                text: "“But you, Bethlehem Ephrathah, though you are small among the clans of Judah, out of you will come for me one who will be ruler over Israel, <strong>whose origins are from of old, from ancient times.”</strong>"
+                            },
+                            // {
+                            //     type: "commentary",
+                            //     text: "The virgin will bear a son and he shall be God? Out of Betlehem shall come one whose origins are from ancient times? What is the Old Testament hinting towards?"
+                            // },
+                            {
+                                type: "commentary",
+                                text: "1.2 God coming to Israel + God as man"
+                            },
+                            {
+                                title: "Jeremiah 23:5-6",
+                                type: "bibleot",
+                                text: "“The days are coming,” declares the Lord, “when I will raise up for David a righteous Branch, a King who will reign wisely and do what is just and right in the land. In his days Judah will be saved and Israel will live in safety. This is the name by which he will be called: <strong>The Lord [Yahweh] Our Righteous Savior.</strong>"
+                            },
+                            {
+                                title: "Isaiah 40:3-5",
+                                type: "bibleot",
+                                text: "A voice cries: “In the wilderness <strong>prepare the way of the Lord; make straight in the desert a highway for our God.</strong> Every valley shall be lifted up, and every mountain and hill be made low; the uneven ground shall become level, and the rough places a plain. <strong>And the glory of the Lord shall be revealed, and all flesh shall see it together,</strong> for the mouth of the Lord has spoken.”"
+                            },
+                            {
+                                type: "commentary",
+                                text: "A similar verse speaking about the same thing, from Malachi, that also says THE LORD will come to his temple:"
+                            },
+                            {
+                                title: "Malachi 3:1",
+                                type: "bibleot",
+                                text: "<strong>“I will send my messenger, who will prepare the way before me. Then suddenly the Lord you are seeking will come to his temple;</strong> the messenger of the covenant, whom you desire, will come,” says the Lord Almighty."
+
+                            },
+                            {
+                                type: "commentary",
+                                text: "The fulfillment? John the Baptist, preparing the way for Jesus:"
+                            },
+                            {
+                                title: "Mark 1:1-4",
+                                type: "bible",
+                                text: "The beginning of the gospel of Jesus Christ, the Son of God. As it is written in Isaiah the prophet, “Behold, I send my messenger before your face, who will prepare your way, the voice of one crying in the wilderness: <strong>‘Prepare the way of the Lord, make his paths straight,’”</strong> John appeared, baptizing in the wilderness and proclaiming a baptism of repentance for the forgiveness of sins."
+                            },
+                            
+                            
+                            {
+                                title: "Zechariah 12:10",
+                                type: "bibleot",
+                                text: "<strong>The Lord,</strong> who stretches out the heavens, who lays the foundation of the earth, and who forms the human spirit within a person, <strong>declares:</strong> [...] “And I will pour out on the house of David and the inhabitants of Jerusalem a spirit of grace and supplication. <strong>They will look on me, the one they have pierced,</strong> and they will mourn for him as one mourns for an only child, and grieve bitterly for him as one grieves for a firstborn son."
+                            },
+                            {
+                                type: "commentary",
+                                text: "God is speaking here and he says he would be the one 'pierced'? The fullfilment is in Jesus Christ, who was God and pierced on the cross."
+                            },
+                            {
+                                type: "commentary",
+                                text: "Here is another very explicit verse talking about a human being eternally worshipped. This passage is found in the book of Daniel, where Daniel sees a vision:"
+                            },
+                           {
+                                title: "Daniel 7:9-14",
+                                type: "bibleot",
+                                text: "“As I looked, <strong>“thrones</strong> were set in place, and <strong>the Ancient of Days took his seat.</strong> His clothing was as white as snow; the hair of his head was white like wool. His throne was flaming with fire, and its wheels were all ablaze. A river of fire was flowing, coming out from before him. Thousands upon thousands attended him; ten thousand times ten thousand stood before him. The court was seated, and the books were opened. [...] “In my vision at night I looked, and there before me was <strong><u>one like a son of man,<u/> coming with the clouds of heaven. He approached the Ancient of Days and was led into his presence. <u>He was given authority, glory and sovereign power; all nations and peoples of every language worshiped him. His dominion is an everlasting dominion that will not pass away, and his kingdom is one that will never be destroyed.</u></strong>"
+                            }, 
+                            
+                            {
+                                type: "commentary",
+                                text: "Here Daniel sees thrones set in place, and the Ancient of Days (the Father) sits on one. Then, he sees one like a son of man (i.e. like a human) who is seated next to the Ancient of Days. All humans of all languages and nations worship Him, and his dominion does not come to an end. Why is a man presented to the Father and given eternal worship? Jesus used this exact title for Himself in numerous verses (Matthew 8:20, Matthew 9:6, Matthew 10:23, Matthew 11:19, Matthew 12:8, Matthew 12:32, Matthew 12:40, Matthew 13:37, Mark 2:10, Mark 2:28, Mark 8:31, Mark 8:38, Mark 9:9, Mark 9:12, Mark 9:31, Mark 10:33, Mark 10:45, Mark 13:26, Luke 5:24, Luke 6:5, Luke 6:22, Luke 7:34, Luke 9:22, Luke 9:26, Luke 9:44, Luke 9:56, Luke 9:58, Luke 11:30, John 1:51, John 3:13, John 3:14, John 5:27, John 6:27, John 6:53, John 6:62, John 8:28, John 9:45, etc.). Furthermore we can conclude that this individual who is to be eternally worshipped IS in fact divine:"
+                            },
+                            {
+                                type: "commentary",
+                                text: "'there before me was one like a son of man, coming with the clouds of heaven.', who's coming with the clouds of heaven but God alone?"
+                            },
+                            {
+                                title: "Psalm 68:4",
+                                text: "Sing to God, sing praises to His name; lift up a song to <strong>Him who rides upon the clouds; His name is the LORD;</strong> be exultant before Him.",
+                                type: "bibleot"
+                            },
+                            {
+                                title: "Deuteronomy 33:26",
+                                text: "There is none like <strong>the God of Jeshurun, who rides across the heavens</strong> to help you and on the clouds in His majesty.",
+                                type: "bibleot"
+                            },
+                            {
+                                type: "commentary",
+                                text: "Further, the aramaic word translated for 'worship' here is יִפְלְח֑וּן (yip̄-lə-ḥūn;). This word, throughout the book of Daniel, is EXPLICITLY used for the worship of God. Here an example:"
+                            },
+                            {
+                                type: "bibleot",
+                                text: "Nebuchadnezzar answered and said, “Blessed be the God of Shadrach, Meshach, and Abednego, who has sent his angel and delivered his servants, who trusted in him, and set aside the king's command, and yielded up their bodies rather than <strong>serve and worship any god except their own God.</strong>",
+                                title: "Daniel 3:28"
+                            },
+                            {
+                                type: "commentary",
+                                text: "Continuing:"
+                            },
+                            {
+                                title: "Zechariah 2:6-13",
+                                type: "bibleot",
+                                text: "Up! Up! Flee from the land of the north, <strong>declares the Lord. [The Lord is speaking]</strong> For I have spread you abroad as the four winds of the heavens, declares the Lord. Up! Escape to Zion, you who dwell with the daughter of Babylon. For thus said the Lord of hosts, after his glory sent me to the nations who plundered you, for he who touches you touches the apple of his eye: “Behold, I will shake my hand over them, and they shall become plunder for those who served them. <strong>Then you will know that the Lord of hosts has sent me. Sing and rejoice, O daughter of Zion, for behold, I come and I will dwell in your midst, declares the Lord.</strong> And many nations shall join themselves to the Lord in that day, and shall be my people. <strong>And I will dwell in your midst, and you shall know that the Lord of hosts has sent me to you.</strong> And the Lord will inherit Judah as his portion in the holy land, and will again choose Jerusalem.” <strong>Be silent, all flesh, before the Lord, for he has roused himself from his holy dwelling.</strong>"
+                            },
+                            {
+                                type: "commentary",
+                                text: "God is sending God to dwell and live with US? This refers to Jesus Christ, the son (God), who was sent by the Father (God)."
+                            },
+                            {
+                                title: "Zechariah 14:1-4",
+
+                                type: "bibleot",
+                                text: "Behold, a day is coming for the Lord, when the spoil taken from you will be divided in your midst. For I will gather all the nations against Jerusalem to battle, and the city shall be taken and the houses plundered and the women raped. Half of the city shall go out into exile, but the rest of the people shall not be cut off from the city. <strong>Then the Lord will go out and fight against those nations as when he fights on a day of battle. On that day his feet shall stand on the Mount of Olives</strong> that lies before Jerusalem on the east, and the Mount of Olives shall be split in two from east to west by a very wide valley, so that one half of the Mount shall move northward, and the other half southward." 
+                                
+                            },
+                            {
+                                type: "commentary",
+                                text: "This is a prophecy about Jesus' second coming, the Lord standing on the mount of olives, coming to fight. Here a parallel:"
+                            },
+                            {
+                                title: "Acts 1:9-12",
+                                type: "bible",
+                                text: " And when he had said these things, as they were looking on, he was lifted up, and a cloud took him out of their sight. And while they were gazing into heaven as he went, behold, two men stood by them in white robes, and said, “Men of Galilee, why do you stand looking into heaven? <strong>This Jesus, who was taken up from you into heaven, will come in the same way as you saw him go into heaven.” Then they returned to Jerusalem from the mount called Olivet,</strong> which is near Jerusalem, a Sabbath day's journey away."
+                            },
+                            
+                            {
+                                type: "commentary",
+                                text: "1.3 God (the Messiah) coming as the Savior"
+                            }, 
+
+                            {
+                                type: "commentary",
+                                text: "Jesus Christ is God and our savior as he saved us from sin:"
+                            },
+
+                            {
+                                title: "Isaiah 59:14-21",
+                                type: "bibleot",
+                                text: "Justice is turned back, and righteousness stands far away; for truth has stumbled in the public squares, and uprightness cannot enter. Truth is lacking, and he who departs from evil makes himself a prey. The Lord saw it, and it displeased him that there was no justice. <strong>He saw that there was no man, and wondered that there was no one to intercede; <u>then his own arm brought him salvation, and his righteousness upheld him. He put on righteousness as a breastplate, and a helmet of salvation on his head;</u> he put on garments of vengeance for clothing, and wrapped himself in zeal as a cloak. According to their deeds, so will he repay, wrath to his adversaries, repayment to his enemies; to the coastlands he will render repayment. So they shall fear the name of the Lord from the west, and his glory from the rising of the sun; for he will come like a rushing stream, which the wind of the Lord drives. <u>“And a Redeemer will come to Zion, to those in Jacob who turn from transgression,”</u> declares the Lord. “And as for me, this is my covenant with them,” says the Lord: “My Spirit that is upon you, and my words that I have put in your mouth, shall not depart out of your mouth, or out of the mouth of your offspring, or out of the mouth of your children's offspring,” says the Lord, “from this time forth and forevermore.”</strong>"
+                            },
+                            {
+                                type: "commentary",
+                                text: "Here God is coming as the savior, saving humanity from sin. The covenant with Him (the Messiah) shall stand forever."
+                            },
+                            
+                            {
+                                title: "Isaiah 35",
+                                type: "bibleot",
+                                text: "The wilderness and the dry land shall be glad; the desert shall rejoice and blossom like the crocus; it shall blossom abundantly and rejoice with joy and singing. The glory of Lebanon shall be given to it, the majesty of Carmel and Sharon. <strong>They shall see the glory of the Lord, the majesty of our God. Strengthen the weak hands, and make firm the feeble knees. Say to those who have an anxious heart, <u>“Be strong; fear not! Behold, your God will come with vengeance, with the recompense of God. He will come and save you.”</u> Then the eyes of the blind shall be opened, and the ears of the deaf unstopped; then shall the lame man leap like a deer, and the tongue of the mute sing for joy. For waters break forth in the wilderness, and streams in the desert; the burning sand shall become a pool, and the thirsty ground springs of water; in the haunt of jackals, where they lie down, the grass shall become reeds and rushes. And a highway shall be there, and it shall be called the Way of Holiness; the unclean shall not pass over it. It shall belong to those who walk on the way; even if they are fools, they shall not go astray. No lion shall be there, nor shall any ravenous beast come up on it; they shall not be found there, but the redeemed shall walk there. And the ransomed of the Lord shall return and come to Zion with singing; everlasting joy shall be upon their heads; they shall obtain gladness and joy, and sorrow and sighing shall flee away.</strong>"
+                            },
+                            {
+                                type: "commentary",
+                                text: "This passage further explains what God had planned for us: He will come Himself to save us. Verses 5-6 also say:<br><br><strong>Then the eyes of the blind shall be opened, and the ears of the deaf unstopped; then shall the lame man leap like a deer, and the tongue of the mute sing for joy.<br><br></strong>These are also all fulfilled, as Jesus healed the blind (Matthew 9:27-30, Mark 8:22-25, John 9:1-7, Matthew 20:29-34), the deaf (Mark 7:31-37), the lame (Matthew 15:30-31, John 5:2-9, Matthew 21:14), and the mute (Matthew 9:32-33, Matthew 12:22, Mark 7:37).<br><br>The last verses of the passage talk about the path of holiness that we now have through Him. He also said this:",
+
+
+                            },
+                            {
+                                title: "Matthew 11:1-5",
+                                type: "bible",
+                                text: "When Jesus had finished instructing his twelve disciples, he went on from there to teach and preach in their cities. Now when John heard in prison about the deeds of the Christ, he sent word by his disciples and said to him, “Are you the one who is to come, or shall we look for another?” And Jesus answered them, “Go and tell John what you hear and see: the blind receive their sight and the lame walk, lepers are cleansed and the deaf hear, and the dead are raised up, and the poor have good news preached to them."
+                            },
+                            {
+                                type: "commentary",
+                                text: "Further:"
+                            },
+                            {
+                                title: "Zechariah 9:9",
+                                type: "bibleot",
+                                text: "Rejoice greatly, O daughter of Zion! Shout aloud, O daughter of Jerusalem! Behold, <strong>your king is coming to you; <u>righteous and having salvation is he,</u> humble and mounted on a donkey, on a colt, the foal of a donkey.</strong>",
+                            },
+                            {
+                                type: "commentary",
+                                text: "The Messiah as righteous (sinless) and having salvation is ultimately fulfilled in Jesus Christ. The entry on a donkey likewise:"
+                            },
+                            {
+                                title: "Matthew 21:1-9",
+                                type: "bible",
+                                text: "Now when they drew near to Jerusalem and came to Bethphage, to the Mount of Olives, then Jesus sent two disciples, saying to them, <strong>“Go into the village in front of you, and immediately you will find a donkey tied, and a colt with her. Untie them and bring them to me.</strong> If anyone says anything to you, you shall say, <strong>‘The Lord needs them,’</strong> and he will send them at once.” [...] The disciples went and did as Jesus had directed them. <strong>They brought the donkey and the colt and put on them their cloaks, and he sat on them. Most of the crowd spread their cloaks on the road, and others cut branches from the trees and spread them on the road. And the crowds that went before him and that followed him were shouting, “Hosanna to the Son of David! Blessed is he who comes in the name of the Lord! Hosanna in the highest!”</strong>"
+                            },
+                            {
+                                type: "commentary",
+                                text: "Continuing:"
+                            },
+                             {
+                                title: "Jeremiah 23:5-6",
+                                type: "bibleot",
+                                text: "“The days are coming,” declares the Lord, “when I will raise up for David a righteous Branch, a King who will reign wisely and do what is just and right in the land. <strong>In his days Judah will be saved and Israel will live in safety. This is the name by which he will be called: The Lord [Yahweh] Our Righteous Savior.</strong>"
+                            }, 
+                            {
+                                type: "commentary",
+                                text: "Why it makes perfect sense for Jesus to also hold the title 'Ruler' will be discussed later in this chapter."
+                            },
+
+                            {
+                                title: "Jeremiah 31:31-34",
+                                type: "bibleot",
+                                text: "<strong>“Behold, the days are coming, declares the Lord, when I will make a new covenant with the house of Israel and the house of Judah,</strong> not like the covenant that I made with their fathers on the day when I took them by the hand to bring them out of the land of Egypt, my covenant that they broke, though I was their husband, declares the Lord. For this is the covenant that I will make with the house of Israel after those days, declares the Lord: <strong>I will put my law within them, and I will write it on their hearts. And I will be their God, and they shall be my people. And no longer shall each one teach his neighbor and each his brother, saying, ‘Know the Lord,’ for they shall all know me, from the least of them to the greatest, declares the Lord. <u>For I will forgive their iniquity, and I will remember their sin no more.”</u></strong>"
+                            },
+                            {
+                                type: "commentary",
+                                text: "This is the new covenant through Jesus Christ, in eternal forgiveness of our sins."
+                            },
+                            {
+                                title: "Genesis 3:14-15",
+                                type: "bibleot",
+                                text: "The Lord God said to the serpent, “Because you have done this, cursed are you above all livestock and above all beasts of the field; on your belly you shall go, and dust you shall eat all the days of your life. <strong>I will put enmity between you and the woman, <u>and between your offspring and her offspring; he shall bruise your head, and you shall bruise his heel.”</u></strong>"
+                            },
+                            {
+                                type: "commentary",
+                                text: "This verse is actually the first mention of the Messiah in the entire Bible, and it says this: God will put enmity between the woman and Satan, and between the woman's offspring (Jesus) and Satan's offspring. HE (the woman's offspring, Jesus Christ), shall bruise HIS (Satan's) head, and Satan, his (Jesus') heel. Which means this: Jesus ultimately crushed Satan's head by defeating death on the cross, saving us from sin, while Satan only crushed his heel, that is, through his pain, suffering and humiliation on the cross."
+                            },
+                            {
+                                type: "commentary",
+                                text: "More:"
+                            },
+                            {
+                                title: "Zechariah 3:8-9",
+                                type: "bibleot",
+                                text: "Hear now, O Joshua the high priest, you and your friends who sit before you, for they are men who are a sign: <strong>behold, I will bring my servant the Branch. For behold, on the stone that I have set before Joshua, on a single stone with seven eyes, I will engrave its inscription, declares the Lord of hosts, <u>and I will remove the iniquity of this land in a single day.</u></strong>"
+                            },
+
+                            {
+                                title: "Daniel 9:24",
+                                type: "bibleot",
+                                text: " “Seventy weeks are decreed about your people and your holy city, <strong>to finish the transgression, to put an end to sin, and to atone for iniquity, to bring in everlasting righteousness, to seal both vision and prophet, and to anoint a most holy place.</strong>"
+                            },
+                            {
+                                type: "commentary",
+                                text: "This prophecy also tells us when exactly He would come, more on that later in this chapter."
+                            },
+                            {
+                                type: "commentary",
+                                text: "The Bible is also very clear about the fact that there is only one savior:"
+                            },
+
+                            {
+                                title: "Isaiah 43:10-13",
+                                type: "bibleot",
+                                text: "“You are my witnesses,” declares the Lord, “and my servant whom I have chosen, that you may know and believe me and understand that I am he. Before me no god was formed, nor shall there be any after me. <strong>I, I am the Lord, and besides me there is no savior.</strong> I declared and saved and proclaimed, when there was no strange god among you; and you are my witnesses,” declares the Lord, “and I am God. Also henceforth I am he; there is none who can deliver from my hand; I work, and who can turn it back?”"
+                            },
+                            {
+                                title: "Hosea 13:4",
+                                type: "bibleot",
+                                text: "But I am the Lord your God from the land of Egypt; you know no God but me, <strong>and besides me there is no savior.</strong>"
+                            },
+                            {
+                                title: "2 Peter 1:1",
+                                type: "bible",
+                                text: "Simeon Peter, a servant and apostle of Jesus Christ, To those who have obtained a faith of equal standing with ours <strong>by the righteousness of our God and Savior Jesus Christ:</strong>"
+                            },
+                            {
+                                type: "commentary",
+                                text: "But <strong>how</strong> would God save us from sin? Find out here!"
+                            },
+                            {
+                                type: "commentary",
+                                text: "1.4 God (the Messiah) as an atonement:"
+                            },
+                            {
+                                title: "Mark 10:45",
+                                type: "bible",
+                                text: "For even the Son of Man came not to be served but to serve, and to give his life as a ransom for many."
+                            },
+                            {
+                                type: "commentary",
+                                text: "Let's look at all the verses that prophecy the Messiah suffering or dying for the sin of humanity. A few verses will be repeated as they already include this theme:"
+                            },
+
+                            {
+                                title: "Genesis 22:1-8",
+                                type: "bibleot",
+                                text: "After these things God tested Abraham and said to him, “Abraham!” And he said, “Here I am.” <strong>He said, <u>“Take your son, your only son Isaac, whom you love,</u> and go to the land of Moriah, and offer him there as a burnt offering on one of the mountains of which I shall tell you.”</strong> So Abraham rose early in the morning, saddled his donkey, and took two of his young men with him, and his son Isaac. <strong>And he cut the wood for the burnt offering and arose and went to the place of which God had told him.</strong> On the third day Abraham lifted up his eyes and saw the place from afar. Then Abraham said to his young men, “Stay here with the donkey; I and the boy will go over there and worship and come again to you.” <strong>And Abraham took the wood of the burnt offering and laid it on Isaac his son. And he took in his hand the fire and the knife. So they went both of them together.</strong> And Isaac said to his father Abraham, “My father!” And he said, “Here I am, my son.” He said, <strong>“Behold, the fire and the wood, but where is the lamb for a burnt offering?” Abraham said, <red>“God will provide for himself the lamb for a burnt offering, my son.”</red></strong> So they went both of them together."
+                            },
+                            {
+                                type: "commentary",
+                                text: "Here God tells Abraham to sacrifice his one and only son, whom he loves, on Mount Moriah. Isaac has to carry the wood for it up the mountain. Then, when Isaac is about to be sacrificed, Abraham tells him that it would be God who will provide the lamb for the burnt offering. This was the promise of God, that the Messiah would die for the sins of the world, and it was fulfilled 2000 years later, in Jesus Christ, Gods one and only beloved Son, who carried the wooden cross up the exact same mountain, to be killed for the sins of the world:"
+                            },
+                            
+                            {
+                                title: "John 3:16",
+                                type: "bible",
+                                text: "For God so loved the world, <strong>that he gave his only Son,</strong> that whoever believes in him should not perish but have eternal life."
+                            },
+                            {
+                                title: "Matthew 3:17",
+                                type: "bible",
+                                text: "and behold, a voice from heaven said, <strong>“This is my beloved Son, with whom I am well pleased.”</strong>"
+                            },
+                            {
+                                title: "John 19:17-20",
+                                type: "bible",
+                                text: "<strong>and he went out, <u>bearing his own cross,</u> to the place called The Place of a Skull, which in Aramaic is called Golgotha.</strong> There they crucified him, and with him two others, one on either side, and Jesus between them. Pilate also wrote an inscription and put it on the cross. It read, “Jesus of Nazareth, the King of the Jews.” Many of the Jews read this inscription, <strong>for the place where Jesus was crucified was near the city,</strong> and it was written in Aramaic, in Latin, and in Greek."
+                            },
+                            {
+                                title: "John 1:29",
+                                type: "bible",
+                                text: "The next day he saw Jesus coming toward him, and said, <strong>“Behold, the Lamb of God, who takes away the sin of the world!</strong>"
+                            },
+                            {
+                                type: "commentary",
+                                text: "Jesus was also the perfect Passover Lamb, prophesied in the Old Testament, whose sinless life was offered as a sacrifice so that through His blood, all who believe are delivered from sin and death:"
+                            },
+                            {
+                                type: "commentary",
+                                text: "Lamb must be without blemish:",
+                            },
+                             {
+                                title: "Exodus 12:5",
+                                type: "bibleot",
+                                text: "Your lamb shall be without blemish, a male a year old. You may take it from the sheep or from the goats"
+                            },
+                             {
+                                title: "1 Peter 1:18-19",
+                                type: "bible",
+                                text: "knowing that you were ransomed from the futile ways inherited from your forefathers, not with perishable things such as silver or gold, but with the precious blood of Christ, like that of a lamb without blemish or spot."
+                            },
+                             {
+                                title: "1 Peter 2:21-22",
+                                type: "bible",
+                                text: "For to this you have been called, because Christ also suffered for you, leaving you an example, so that you might follow in his steps. He committed no sin, neither was deceit found in his mouth."
+                            },
+                            {
+                                type: "commentary",
+                                text: "Sacrifice the lamb:",
+                            },
+                             {
+                                title: "Exodus 12:6",
+                                type: "bibleot",
+                                text: "and you shall keep it until the fourteenth day of this month, when the whole assembly of the congregation of Israel shall kill their lambs at twilight."
+                            },
+                            {
+                                title: "Hebrews 9:12-14",
+                                type: "bible",
+                                text: "He entered once for all into the holy places, not by means of the blood of goats and calves but by means of his own blood, thus securing an eternal redemption. For if the blood of goats and bulls, and the sprinkling of defiled persons with the ashes of a heifer, sanctify for the purification of the flesh, how much more will the blood of Christ, who through the eternal Spirit offered himself without blemish to God, purify our conscience from dead works to serve the living God."
+                            }, 
+                            {
+                                type: "commentary",
+                                text: "Blood applied to doorposts:"
+                            },
+                            {
+                                title: "Exodus 12:7",
+                                type: "bibleot",
+                                text: "Then they shall take some of the blood and put it on the two doorposts and the lintel of the houses in which they eat it."
+                            },
+                             {
+                                title: "Romans 5:9",
+                                type: "bible",
+                                text: "Since, therefore, we have now been justified by his blood, much more shall we be saved by him from the wrath of God."
+                            },
+                             {
+                                title: "Ephesians 1:7",
+                                type: "bibleot",
+                                text: "In him we have redemption through his blood, the forgiveness of our trespasses, according to the riches of his grace"
+                            },
+                            {
+                                type: "commentary",
+                                text: "Do not break any bones:"
+                            },
+                             {
+                                title: "Exodus 12:46",
+                                type: "bibleot",
+                                text: "It shall be eaten in one house; you shall not take any of the flesh outside the house, and you shall not break any of its bones."
+                            },
+                            {
+                                title: "Numbers 9:12",
+                                type: "bibleot",
+                                text: "They shall leave none of it until the morning, nor break any of its bones; according to all the statute for the Passover they shall keep it."
+                            },
+                            {
+                                title: "John 19:33-36",
+                                type: "bible",
+                                text: "But when they came to Jesus and saw that he was already dead, they did not break his legs. But one of the soldiers pierced his side with a spear, and at once there came out blood and water. He who saw it has borne witness—his testimony is true, and he knows that he is telling the truth—that you also may believe. For these things took place that the Scripture might be fulfilled: “Not one of his bones will be broken.”"
+                            },
+                            {type: "commentary", text: "More prophecies:"},
+                            {
+                                title: "Daniel 9:24-26",
+                                type: "bibleot",
+                                text: "“Seventy weeks are decreed about your people and your holy city, <strong><u>to finish the transgression, to put an end to sin, and to atone for iniquity,</u></strong> to bring in everlasting righteousness, to seal both vision and prophet, and to anoint a most holy place. Know therefore and understand that from the going out of the word to restore and build Jerusalem to the coming of an anointed one, a prince, there shall be seven weeks. And for sixty-two weeks it shall be built again with squares and moat, but in a troubled time. <strong>And after the sixty-two weeks, <u>an anointed one shall be cut off and shall have nothing.</u></strong> And the people of the prince who is to come shall destroy the city and the sanctuary. Its end shall come with a flood, and to the end there shall be war. Desolations are decreed."
+                            },
+                            {
+                                type: "commentary",
+                                text: "Here it says that there would be an END to sin, and the anointed one shall be cut off (i.e killed)."
+                            },
+                            
+                            
+                            {
+                                title: "Zechariah 12:10",
+                                type: "bibleot",
+                                text: "<strong>The Lord,</strong> who stretches out the heavens, who lays the foundation of the earth, and who forms the human spirit within a person, <strong>declares:</strong> [...] “And I will pour out on the house of David and the inhabitants of Jerusalem a spirit of grace and supplication. <strong><u>They will look on me, the one they have pierced,</u></strong> and they will mourn for him as one mourns for an only child, and grieve bitterly for him as one grieves for a firstborn son."
+                            },
+                            {
+                                type: "commentary",
+                                text: "Here God is 'pierced', ultimately fulfilled in Jesus Christ, who was pierced and killed for our sins."
+                            },
+                            {
+                                title: "Genesis 3:14-15",
+                                type: "bibleot",
+                                text: "The Lord God said to the serpent, “Because you have done this, cursed are you above all livestock and above all beasts of the field; on your belly you shall go, and dust you shall eat all the days of your life. <strong>I will put enmity between you and the woman, <u>and between your offspring and her offspring; he shall bruise your head, and you shall bruise his heel.”</u></strong>"
+                            },
+                            {
+                                type: "commentary",
+                                text: "Here again, the heel of the woman's offspring (the Messiah, Jesus) shall be bruised by Satan (which happened on the cross), but he (the Messiah, Jesus) shall crush his head, which He did, by defeating sin and death on the cross through the resurrection."
+                            },
+                             {
+                                title: "Isaiah 52:13-53:12",
+                                type: "bibleot",
+                                text: "<blue>Behold, my servant shall act wisely; he shall be high and lifted up, and shall be exalted.</blue> <green>As many were astonished at you— his appearance was so marred, beyond human semblance, and his form beyond that of the children of mankind—</green><blue>so shall he sprinkle many nations. Kings shall shut their mouths because of him, for that which has not been told them they see, and that which they have not heard they understand.</blue><red> Who has believed what he has heard from us? And to whom has the arm of the Lord been revealed?</red><blue> For he grew up before him like a young plant, <strong>and like a root out of dry ground;</strong> he had no form or majesty that we should look at him, and no beauty that we should desire him.</blue> <green>He was despised and rejected by men, a man of sorrows and acquainted with grief; and as one from whom men hide their faces he was despised, <blue>and <strong>we</strong> esteemed him not.</blue> Surely he has borne our griefs and carried our sorrows; <blue>yet <strong>we</strong> esteemed him stricken, smitten by God, and afflicted.</blue> <strong>But he was pierced for our transgressions; he was crushed for our iniquities;</strong> upon him was the chastisement that brought us peace, and with his wounds we are healed. All we like sheep have gone astray; we have turned—every one—to his own way; <strong>and the Lord has laid on him the iniquity of us all.</strong><blue> He was oppressed, and he was afflicted, yet he opened not his mouth; like a lamb that is led to the slaughter, and like a sheep that before its shearers is silent, so he opened not his mouth.</blue> By oppression and judgment he was taken away; and as for his generation, <strong>who considered that he was cut off out of the land of the living,</strong> stricken for the transgression of my people? <blue>And they made his grave with the wicked and with a rich man in his death, although he had done no violence, and there was no deceit in his mouth. Yet it was the will of the Lord to crush him; he has put him to grief; when his soul makes an offering for guilt, he shall see his offspring; <strong>he shall prolong his days;</strong> the will of the Lord shall prosper in his hand.</blue></green><green> Out of the anguish of his soul he shall see and be satisfied; by his knowledge shall the righteous one, my servant, make many to be accounted righteous, and he shall bear their iniquities. Therefore I will divide him a portion with the many and he shall divide the spoil with the strong, because he poured out his soul to death and was numbered with the transgressors; yet he bore the sin of many, and makes intercession for the transgressors.</green>"
+                            },
+                            {
+                                type: "commentary",
+                                text: "This passage talks about a servant who would suffer and die for the sins of humanity. He would be the one who takes the punishment for sin upon Himself, that we may all live.<br><br>I split up the text into 3 categories:<br><br><green>Green</green> -> shows that the servant dies for the sins of humanity<br><blue>Blue</blue> -> more prophecies regarding the servant<br><red>Red</red> -> more on Christian doctrine<br><br><blue>Behold, my servant shall act wisely; he shall be high and lifted up, and shall be exalted</blue> - high exalted (after the resurrection) and lifted up to heaven (fulfillment: Acts 1:8-11; Ephesians 1:19-22; Philippians 2:5-9)<br><br><green>As many were astonished at you— his appearance was so marred, beyond human semblance, and his form beyond that of the children of mankind</green> - he would be so beaten, tortured and abused that he would almost not look like a human anymore (fulfillment: Luke 18:31-34, Matt 26:67-68),<br><br><blue>so shall he sprinkle many nations. Kings shall shut their mouths because of him, for that which has not been told them they see, and that which they have not heard they understand.</blue> - His message shall spread to many nations (fulfilled)<br><br><red>Who has believed what he has heard from us? And to whom has the arm of the Lord been revealed?</red> - salvation based on grace through faith<br><br><blue>For he grew up before him like a young plant, and like a root out of dry ground;</blue> - a root cannot grow out of dry ground, because it needs water. And Jesus was born without a father, only by a virgin, which would have been impossible (fulfillment: Matthew 1:18-25, Luke 1:26-35)<br><br><blue>he had no form or majesty that we should look at him, and no beauty that we should desire him.</blue> - He looked like an ordinary man (fulfillment: Philippians 2:6-8)<br><br><green>He was despised and rejected by men, a man of sorrows and acquainted with grief; and as one from whom men hide their faces he was despised</green> - He would be hated, despised and rejected with great sorrow and grief (fulfillment: Luke 4:28-29, Matthew 27:21-23, Matthew 26:37-38, Luke 19:41, Hebrews 4:15)<br><br><blue>and we esteemed him not; yet we esteemed him stricken, smitten by God, and afflicted</blue> - the 'we' here refers to the Jews, as they rejected the Messiah, and hated Him (fulfillment: Matthew 26:66, 27:41-43)<br><br><green>Surely he has borne our griefs and carried our sorrows; But he was pierced for our transgressions; he was crushed for our iniquities; upon him was the chastisement that brought us peace, and with his wounds we are healed. All we like sheep have gone astray; we have turned—every one—to his own way; and the Lord has laid on him the iniquity of us all.</green> - the Messiah to die for the sins of humanity (fulfillment: Colossians 1:20, 1 Peter 2:24, 1 John 2:2; 4:10, Galatians 1:4, 2 Corinthians 5:21; Hebrews 2:9)<br><br><blue>He was oppressed, and he was afflicted, yet he opened not his mouth; like a lamb that is led to the slaughter, and like a sheep that before its shearers is silent, so he opened not his mouth.</blue> - servant does not open his mouth before his accusers (fulfillment: Matt 27:12-14)<br><br><green>By oppression and judgment he was taken away; and as for his generation, who considered that he was cut off out of the land of the living, stricken for the transgression of my people?</green> - servant would be killed (Matthew 27:35)<br><br><blue>And they made his grave with the wicked and with a rich man in his death</blue> - killed next to the wicked and buried in a rich man's tomb (fulfillment: Matthew 27:38, 27:57)<br><br><blue>although he had done no violence, and there was no deceit in his mouth. Yet it was the will of the Lord to crush him; he has put him to grief;</blue> - sinless, and God's will to crush him (Luke 23:41, John 18:38, John 18:11)<br><br><blue>when his soul makes an offering for guilt, he shall see his offspring; he shall prolong his days; the will of the Lord shall prosper in his hand.</blue> - shall 'prolong his days' after death -> resurrection (fulfillment: Matthew 28:1-7, Mark 16:5-6, John 20:1-9)<br><br><green>Out of the anguish of his soul he shall see and be satisfied; by his knowledge shall the righteous one, my servant, make many to be accounted righteous, and he shall bear their iniquities. Therefore I will divide him a portion with the many and he shall divide the spoil with the strong, because he poured out his soul to death and was numbered with the transgressors; yet he bore the sin of many, and makes intercession for the transgressors</green> - we are justified by his sinlessness and He bears our iniquities (fulfillment: Romans 5:8-9, 18-19, Hebrews 9:28)<br><br>So, this prophecy talks about a servant that would be hated, rejected and unappreciated (by Israel),  born of a virgin, 'pierced' and crushed for the sins of humanity after not opening his mouth against his accusers, killed next to the wicked, buried in a rich man's tomb, would rise from the dead and spread his message and his covenant to many nations. This, and all the other prophecies that talk about a person with a similar role, refer to one man: Jesus Christ."
+                            },
+
+
+                            {
+                                type: "commentary",
+                                text: "THIS IS NOT DONE YET AT ALL. 95% HAS NOT BEEN ADDED TO THE SITE."
+                            },
+                             {
+                                title: "",
+                                type: "bibleot",
+                                text: ""
+                            },
+                             {
+                                title: "",
+                                type: "bibleot",
+                                text: ""
+                            },
+                             {
+                                title: "",
+                                type: "bibleot",
+                                text: ""
+                            },
+                             {
+                                title: "",
+                                type: "bibleot",
+                                text: ""
+                            },
+                            {
+                                title: "",
+                                type: "bibleot",
+                                text: ""
+                            },
+
+                            // {
+                            //     title: "Psalm 110:1",
+                            //     type: "bibleot",
+                            //     text: "Of David. A psalm. <strong>The Lord says to my lord:</strong>  “Sit at my right hand until I make your enemies a footstool for your feet.”"
+                            // },
+                            // {
+                            //     type: "commentary",
+                            //     text: "If David is the supreme king, why does he refer to the messiah as 'Lord'? This implies that the Messiah would be far greater than just a king."
+                            // },
+                            
+                            
+                            
+                            
+
+
+
+
+                        ]
+                    },
+                }
+            },
             
-            "must_accept_hadith": {
-                title: "Must accept Hadiths",
+            
+            "hadiths": {
+                title: "Accepting Hadiths",
                 subTopics: {
                     "basis": {
                         title: "Basis for the Hadiths",
@@ -8279,7 +9058,7 @@
                             },
                             {
                                 type: "commentary",
-                                text: "Another thing to note is rejecting the hadiths essentially means rejecting mainstream islamic practice, as most of it is not explicitly described in the Quran:<br><br>1. Prayer: the Quran does tell muslims to pray, but not how to. the number of daily prayers and how many rakahs (units), the timing of these prayers, the sequence of movements (standing, bowing, prostrating, and sitting) are not mentioned in the Quran. The Quran also says 'recite' but not what to recite, the hadiths make it clear. the Quran does also not tell you: to pray towards the Kaaba, how to peform ablution before prayer (order of washing, how many times to wash each part, and exceptions), and how to dress during prayer.<br><br>2. Zakat: the Quran tells muslims to give charity, but not how much, on what assets, and to whom.<br><br>3. Hajj rituals: the Quran tells muslims to go to Mecca, but not the details: what clothing they need put on, which actions to avoid, walking around the kaaba 7 times counterclockwise, walking or jogging seven times between the hills of Safa and Marwah near the Kaaba, and all other details about the pilgrimage.<br><br>4. More on ablution (washing)<br><br>5. Fasting<br><br>6. Law, Halal & Haram<br><br>7. Social & Family life: marriage, etc.<br><br>The reality is, most of islamic practice comes from the hadiths. If you reject the hadiths, you're basically no muslim anymore. The Quran also condemns this viewpoint. Another thing to add is that there are numerous verses in the Quran that you simply cannot fully understand without a hadith explaining them. (33:37, 111, 17:2, etc.)"                            },
+                                text: "Another thing to note is rejecting the hadiths essentially means rejecting mainstream islamic practice, as most of it is not explicitly described in the Quran:<br><br>1. Prayer: the Quran does tell muslims to pray, but not how to. the number of daily prayers and how many rakahs (units), the timing of these prayers, the sequence of movements (standing, bowing, prostrating, and sitting) are not mentioned in the Quran. The Quran also says 'recite' but not what to recite, the hadiths make it clear. the Quran does also not tell you: to pray towards the Kaaba, how to peform ablution before prayer (order of washing, how many times to wash each part, and exceptions), and how to dress during prayer.<br><br>2. Zakat: the Quran tells muslims to give charity, but not how much, on what assets, and to whom.<br><br>3. Hajj rituals: the Quran tells muslims to go to Mecca, but not the details: what clothing they need put on, which actions to avoid, walking around the kaaba 7 times counterclockwise, walking or jogging seven times between the hills of Safa and Marwah near the Kaaba, and all other details about the pilgrimage.<br><br>4. More on ablution (washing)<br><br>5. Fasting<br><br>6. Law, Halal & Haram<br><br>7. Social & Family life: marriage, etc.<br><br>The reality is, most of islamic practice comes from the hadiths. If you reject the hadiths, you're essentially not a muslim anymore. And another thing to add is that numerous verses in the Quran simply cannot be fully understood without a hadith explaining them (despite the Quran saying it's a clear and sufficient book). (33:37, 111, 17:2, etc.)"                            },
 
 
 
@@ -8293,7 +9072,6 @@
                 }
             },
 
-            
             "quotes": {
                 title: "Quotes",
                 subTopics: {
@@ -8423,16 +9201,24 @@
                 }
             }
       
-       
-       
         }
         // Generate navigation menu
         function generateNavigation() {
             const navMenu = document.getElementById('nav-menu');
             
-            Object.keys(contentDatabase).forEach(key => {
+            Object.keys(contentDatabase).forEach((key, index) => {
                 const navItem = document.createElement('div');
-                navItem.className = 'nav-item';
+                let navClass = 'nav-item';
+                if (key === 'disclaimer' || key === 'intro_islam') {
+                    navClass += ' disclaimer';
+                } else if (key === 'quotes') {
+                    navClass += ' quotes';
+                } else if (key === 'hadiths') {
+                    navClass += ' hadiths';
+                } else if (key === 'Jesus_messiah') {
+                    navClass += ' jesus_messiah';
+                }
+                navItem.className = navClass;
                 
                 const titleSpan = document.createElement('span');
                 titleSpan.textContent = contentDatabase[key].title;
@@ -8447,13 +9233,33 @@
                 navItem.onclick = () => toggleSubMenu(key);
                 
                 // Create sub-menu
+                let subMenuClass = 'sub-menu';
+                if (key === 'disclaimer' || key === 'intro_islam') {
+                    subMenuClass += ' disclaimer';
+                } else if (key === 'quotes') {
+                    subMenuClass += ' quotes';
+                } else if (key === 'hadiths') {
+                    subMenuClass += ' hadiths';
+                } else if (key === 'Jesus_messiah') {
+                    subMenuClass += ' jesus_messiah';
+                }
                 const subMenu = document.createElement('div');
-                subMenu.className = 'sub-menu';
+                subMenu.className = subMenuClass;
                 subMenu.id = `sub-${key}`;
-                
+
                 Object.keys(contentDatabase[key].subTopics).forEach(subKey => {
+                    let subNavClass = 'sub-nav-item';
+                    if (key === 'disclaimer' || key === 'intro_islam') {
+                        subNavClass += ' disclaimer';
+                    } else if (key === 'quotes') {
+                        subNavClass += ' quotes';
+                    } else if (key === 'hadiths') {
+                        subNavClass += ' hadiths';
+                    } else if (key === 'Jesus_messiah') {
+                        subNavClass += ' jesus_messiah';
+                    }
                     const subNavItem = document.createElement('div');
-                    subNavItem.className = 'sub-nav-item';
+                    subNavItem.className = subNavClass;
                     subNavItem.textContent = contentDatabase[key].subTopics[subKey].title;
                     subNavItem.onclick = (e) => {
                         e.stopPropagation();
