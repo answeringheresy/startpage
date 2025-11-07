@@ -436,6 +436,10 @@
             color: green;
         }
 
+        purple {
+            color: purple;
+        }
+
      
         
 
@@ -564,6 +568,53 @@
     <script>
         // Function to generate source URLs
         // Function to generate source URLs
+
+        // function bibleGatewayUrlFromTitle(title) {
+        //     // Trim and normalize spaces
+        //     const s = title.trim().replace(/\s+/g, ' ');
+        //     // Match: book name (anything) + space + chapter (digits) + ":" + verse or verse-range (digits or digits-digits)
+        //     const m = s.match(/^(.+?)\s+(\d+):(\d+(?:-\d+)?)$/);
+        //     if (!m) throw new Error('Invalid title format. Expected "BookName Chapter:Verse" (e.g. "Isaiah 61:5" or "Isaiah 61:5-7").');
+
+        //     const book = m[1];           // e.g. "Isaiah" or "1 John"
+        //     const chapter = m[2];        // e.g. "61"
+        //     const versePart = m[3];      // e.g. "5" or "5-7"
+
+        //     const query = `${book} ${chapter}:${versePart}`;
+        //     const encoded = encodeURIComponent(query); // spaces -> %20, ":" -> %3A, "-" stays "-"
+        //     return `https://www.biblegateway.com/passage/?search=${encoded}&version=ESV`;
+        // }
+
+        function bibleGatewayUrl(title) {
+            const s = title.trim().replace(/\s+/g, ' ');
+
+            // Match "Book Chapter:Verse[-Verse]" or "Book Chapter"
+            const chapterVersePattern = /^(.+?)\s+(\d+):(\d+(?:-\d+)?)$/; // book, chapter, verse/verse-range
+            const chapterOnlyPattern = /^(.+?)\s+(\d+)$/;                 // book, chapter only
+
+            let query;
+
+            const chapterVerseMatch = s.match(chapterVersePattern);
+            const chapterOnlyMatch = s.match(chapterOnlyPattern);
+
+            if (chapterVerseMatch) {
+                const book = chapterVerseMatch[1];
+                const chapter = chapterVerseMatch[2];
+                const versePart = chapterVerseMatch[3];
+                query = `${book} ${chapter}:${versePart}`;
+            } else if (chapterOnlyMatch) {
+                const book = chapterOnlyMatch[1];
+                const chapter = chapterOnlyMatch[2];
+                query = `${book} ${chapter}`;
+            } else {
+                throw new Error('Invalid title format. Expected "Book Chapter" or "Book Chapter:Verse[-Verse]".');
+            }
+
+            const encoded = encodeURIComponent(query);
+            return `https://www.biblegateway.com/passage/?search=${encoded}&version=ESV`;
+            }
+
+
         function generateSourceUrl(title, type, sourceUrl = null) {
             if (type === 'quran') {
                 // Extract chapter and verse from Quran titles like "Quran 2:223"
@@ -574,6 +625,15 @@
                     return `https://quranx.com/${chapter}.${verse}`;
                 }
             }
+            else if (type === 'bibleot' || type === 'bible') {
+                // Extract chapter and verse from Quran titles like "Quran 2:223"
+                console.log(title);
+                if (title !== "") {
+                    return bibleGatewayUrl(title);
+                }
+                
+            }
+
             else if (type === 'hadith') {
                 // Common regex for hadith numbers with optional letter suffix
                 const match = title.match(/(\d+[a-z]?)/i);
@@ -5516,7 +5576,7 @@
 
 
             "Jesus": {
-                title: "Who is Jesus?",
+                title: "Jesus",
                 subTopics: {
                     "Jesusgreaterthanmuhammad": {
 
@@ -8526,19 +8586,29 @@
             "Jesus_messiah": {
                 title: "Jesus the Messiah",
                 subTopics: {
-                    "basis": {
+                    "prophecies": {
                         title: "Jesus as the promised Messiah",
                         introduction: "The Old Testament repeatedly speaks of an 'anointed one' and prophesizes a specific individual. This individual would save the world and do numerous of other things. Almost no prophecy, which Jesus fulfilled, works for Islam. Whether it be the crucifixion and the suffering of the Messiah, or God coming to earth, or the Messiah being the bringer of the eternal covenant, none of it is compatible with Islam.",
                         sources: [
 
                             {
                                 type: "commentary",
-                                text: "Let's look into it all: who is the Messiah? Does Jesus fulfill the prophecies? Is Jesus the true Messiah?"
+                                text: "Let's look into it all: who is the Messiah? Does Jesus fulfill the prophecies? Is Jesus the true Messiah? (for the Psalms: some Psalms are David's personal expierences that foreshadow Christ, while others are prophetic / messianic, or, very often, a mix of them both, David's expierences coupled with what his offspring, the Messiah, Jesus, was going to do.)"
+                            },
+                            {
+                                title: "Luke 24:44-47",
+                                text: "Then he said to them, “These are my words that I spoke to you while I was still with you, that everything written about me in the Law of Moses and the Prophets and the Psalms must be fulfilled.” Then he opened their minds to understand the Scriptures, and said to them, “Thus it is written, that the Christ should suffer and on the third day rise from the dead, and that repentance for the forgiveness of sins should be proclaimed in his name to all nations, beginning from Jerusalem.",
+                                type: "bible"
+                            },
+                            {
+                                title: "John 3:17",
+                                text: "For God did not send his Son into the world to condemn the world, but in order that the world might be saved through him.",
+                                type: "bible"
                             },
 
                             {
                                 type: "commentary",
-                                text: "1. The Messiah: God coming to earth?"
+                                text: "1. The Messiah: God coming to save humanity?"
                             },                            
                             {
                                 type: "commentary",
@@ -8547,7 +8617,7 @@
 
                             {
                                 type: "commentary",
-                                text: "1.1 God to be born"
+                                text: "1.1 The incarnation: God to be born"
                             },
 
 
@@ -8557,14 +8627,24 @@
                                 text: "Therefore the Lord himself will give you a sign: The virgin will conceive <strong>and give birth to a son, and will call him Immanuel ['God with us'].</strong>"
                             },
                             {
-                                title: "Isaiah 9:6-7",
+                                title: "Isaiah 9:1-7",
                                 type: "bibleot",
-                                text: "For to us <strong>a child is born, to us a son is given,</strong> and the government will be on his shoulders. And he will be called Wonderful Counselor, <strong>Mighty God, Everlasting Father,</strong> Prince of Peace. Of the greatness of his government and peace <strong>there will be no end.</strong> He will reign on David’s throne and over his kingdom, establishing and upholding it with justice and righteousness <strong>from that time on and forever.</strong> The zeal of the Lord Almighty will accomplish this."
+                                text: "But there will be no gloom for her who was in anguish; in the former time he brought into contempt the land of Zebulun and the land of Naphtali, <strong>but in the latter time he has made glorious the way of the sea, the land beyond the Jordan, Galilee of the nations. The people who walked in darkness have seen a great light; those who dwelt in a land of deep darkness, on them has light shone.</strong> You have multiplied the nation; you have increased its joy; they rejoice before you as with joy at the harvest, as they are glad when they divide the spoil. For the yoke of his burden, and the staff for his shoulder, the rod of his oppressor, you have broken as on the day of Midian. For every boot of the tramping warrior in battle tumult and every garment rolled in blood will be burned as fuel for the fire. <strong>For to us a child is born, to us a son is given; and the government shall be upon his shoulder, and his name shall be called Wonderful Counselor, <u>Mighty God,</u> Everlasting Father, Prince of Peace. Of the increase of his government and of peace there will be no end, on the throne of David and over his kingdom, to establish it and to uphold it with justice and with righteousness from this time forth and forevermore.</strong> The zeal of the Lord of hosts will do this.",
+                            
                             },
                             {
-                                title: "Micah 5:2",
+                                type: "commentary",
+                                text: "(Jesus' ministry began in Galilee)"
+                            },
+                            {
+                                title: "Micah 5:2-5",
                                 type: "bibleot",
-                                text: "“But you, Bethlehem Ephrathah, though you are small among the clans of Judah, out of you will come for me one who will be ruler over Israel, <strong>whose origins are from of old, from ancient times.”</strong>"
+                                text: "“<strong>But you, Bethlehem Ephrathah, though you are small among the clans of Judah, out of you will come for me one who will be ruler over Israel, <u>whose origins are from of old, from ancient times.”</u></strong> Therefore he shall give them up until the time when she who is in labor has given birth; then the rest of his brothers shall return to the people of Israel. <strong>And he shall stand and shepherd his flock in the strength of the Lord, in the majesty of the name of the Lord his God. And they shall dwell secure, for now he shall be great to the ends of the earth. And he shall be their peace.</strong>"
+                            },
+
+                            {
+                                type: "commentary",
+                                text: "(Jesus is also identified as the Shepherd throughout the Gospels)"
                             },
                             // {
                             //     type: "commentary",
@@ -8577,7 +8657,7 @@
                             {
                                 title: "Jeremiah 23:5-6",
                                 type: "bibleot",
-                                text: "“The days are coming,” declares the Lord, “when I will raise up for David a righteous Branch, a King who will reign wisely and do what is just and right in the land. In his days Judah will be saved and Israel will live in safety. This is the name by which he will be called: <strong>The Lord [Yahweh] Our Righteous Savior.</strong>"
+                                text: "“The days are coming,” declares the Lord, “when I will raise up for David a righteous Branch, a King who will reign wisely and do what is just and right in the land. <strong>In his days Judah will be saved and Israel will live in safety.</strong> This is the name by which he will be called: <strong><u>The Lord [Yahweh] Our Righteous Savior.</u></strong>"
                             },
                             {
                                 title: "Isaiah 40:3-5",
@@ -8591,7 +8671,7 @@
                             {
                                 title: "Malachi 3:1",
                                 type: "bibleot",
-                                text: "<strong>“I will send my messenger, who will prepare the way before me. Then suddenly the Lord you are seeking will come to his temple;</strong> the messenger of the covenant, whom you desire, will come,” says the Lord Almighty."
+                                text: "<strong>“I will send my messenger, who will prepare the way before me. <u>Then suddenly the Lord you are seeking will come to his temple; the messenger of the covenant, whom you desire, will come,”</u></strong> says the Lord Almighty."
 
                             },
                             {
@@ -8608,7 +8688,7 @@
                             {
                                 title: "Zechariah 12:10",
                                 type: "bibleot",
-                                text: "<strong>The Lord,</strong> who stretches out the heavens, who lays the foundation of the earth, and who forms the human spirit within a person, <strong>declares:</strong> [...] “And I will pour out on the house of David and the inhabitants of Jerusalem a spirit of grace and supplication. <strong>They will look on me, the one they have pierced,</strong> and they will mourn for him as one mourns for an only child, and grieve bitterly for him as one grieves for a firstborn son."
+                                text: "<strong>The Lord,</strong> who stretches out the heavens, who lays the foundation of the earth, and who forms the human spirit within a person, <strong>declares:</strong> [...] “And I will pour out on the house of David and the inhabitants of Jerusalem a spirit of grace and supplication. <strong><u>They will look on me, the one they have pierced,</u> and they will mourn for him as one mourns for an only child, and grieve bitterly for him as one grieves for a firstborn son.</strong>"
                             },
                             {
                                 type: "commentary",
@@ -8630,7 +8710,7 @@
                             },
                             {
                                 type: "commentary",
-                                text: "'there before me was one like a son of man, coming with the clouds of heaven.', who's coming with the clouds of heaven but God alone?"
+                                text: "'there before me was one like a son of man, coming with the clouds of heaven.', the imagery 'riding on the clouds' is only attributed to God Himself:"
                             },
                             {
                                 title: "Psalm 68:4",
@@ -8658,8 +8738,19 @@
                             {
                                 title: "Zechariah 2:6-13",
                                 type: "bibleot",
-                                text: "Up! Up! Flee from the land of the north, <strong>declares the Lord. [The Lord is speaking]</strong> For I have spread you abroad as the four winds of the heavens, declares the Lord. Up! Escape to Zion, you who dwell with the daughter of Babylon. For thus said the Lord of hosts, after his glory sent me to the nations who plundered you, for he who touches you touches the apple of his eye: “Behold, I will shake my hand over them, and they shall become plunder for those who served them. <strong>Then you will know that the Lord of hosts has sent me. Sing and rejoice, O daughter of Zion, for behold, I come and I will dwell in your midst, declares the Lord.</strong> And many nations shall join themselves to the Lord in that day, and shall be my people. <strong>And I will dwell in your midst, and you shall know that the Lord of hosts has sent me to you.</strong> And the Lord will inherit Judah as his portion in the holy land, and will again choose Jerusalem.” <strong>Be silent, all flesh, before the Lord, for he has roused himself from his holy dwelling.</strong>"
+                                text: "Up! Up! Flee from the land of the north, <strong>declares the Lord. [The Lord is speaking]</strong> For I have spread you abroad as the four winds of the heavens, declares the Lord. Up! Escape to Zion, you who dwell with the daughter of Babylon. For thus said the Lord of hosts, after his glory sent me to the nations who plundered you, for he who touches you touches the apple of his eye: “Behold, I will shake my hand over them, and they shall become plunder for those who served them. <strong><u>Then you will know that the Lord of hosts has sent me. Sing and rejoice, O daughter of Zion, for behold, I come and I will dwell in your midst, declares the Lord.</u></strong> And many nations shall join themselves to the Lord in that day, and shall be my people. <strong><u><blue>And I will dwell in your midst, and you shall know that the Lord of hosts has sent me to you.</blue></u></strong> And the Lord will inherit Judah as his portion in the holy land, and will again choose Jerusalem.” <strong><u><green>Be silent, all flesh, before the Lord, for he has roused himself from his holy dwelling.</green></u></strong>"
                             },
+                            {
+                                title: "John 5:37-38",
+                                type: "bible",
+                                text: "<blue><u>And the Father who sent me</u> has himself borne witness about me. His voice you have never heard, his form you have never seen, and you do not have his word abiding in you, <u>for you do not believe the one whom he has sent.</u></blue>"
+                            },
+                            {
+                                title: "John 6:38",
+                                type: "bible",
+                                text: "<green><u>For I have come down from heaven,</u> not to do my own will but the will of him who sent me.</green>"
+                            },
+
                             {
                                 type: "commentary",
                                 text: "God is sending God to dwell and live with US? This refers to Jesus Christ, the son (God), who was sent by the Father (God)."
@@ -8668,7 +8759,7 @@
                                 title: "Zechariah 14:1-4",
 
                                 type: "bibleot",
-                                text: "Behold, a day is coming for the Lord, when the spoil taken from you will be divided in your midst. For I will gather all the nations against Jerusalem to battle, and the city shall be taken and the houses plundered and the women raped. Half of the city shall go out into exile, but the rest of the people shall not be cut off from the city. <strong>Then the Lord will go out and fight against those nations as when he fights on a day of battle. On that day his feet shall stand on the Mount of Olives</strong> that lies before Jerusalem on the east, and the Mount of Olives shall be split in two from east to west by a very wide valley, so that one half of the Mount shall move northward, and the other half southward." 
+                                text: "Behold, a day is coming for the Lord, when the spoil taken from you will be divided in your midst. For I will gather all the nations against Jerusalem to battle, and the city shall be taken and the houses plundered and the women raped. Half of the city shall go out into exile, but the rest of the people shall not be cut off from the city. <strong><u>Then the Lord will go out and fight against those nations as when he fights on a day of battle. On that day his feet shall stand on the Mount of Olives</u></strong> that lies before Jerusalem on the east, and the Mount of Olives shall be split in two from east to west by a very wide valley, so that one half of the Mount shall move northward, and the other half southward." 
                                 
                             },
                             {
@@ -8680,7 +8771,29 @@
                                 type: "bible",
                                 text: " And when he had said these things, as they were looking on, he was lifted up, and a cloud took him out of their sight. And while they were gazing into heaven as he went, behold, two men stood by them in white robes, and said, “Men of Galilee, why do you stand looking into heaven? <strong>This Jesus, who was taken up from you into heaven, will come in the same way as you saw him go into heaven.” Then they returned to Jerusalem from the mount called Olivet,</strong> which is near Jerusalem, a Sabbath day's journey away."
                             },
-                            
+                            {
+                                title: "Isaiah 2:2-5",
+                                text: "It shall come to pass in the latter days that the mountain of the house of the Lord shall be established as the highest of the mountains, and shall be lifted up above the hills; and all the nations shall flow to it, <strong>and many peoples shall come, and say: “Come, let us go up to the mountain of the Lord, to the house of the God of Jacob, <u>that he may teach us his ways and that we may walk in his paths.” For out of Zion shall go forth the law, and the word of the Lord from Jerusalem.</u> He shall judge between the nations, and shall decide disputes for many peoples;</strong> and they shall beat their swords into plowshares, and their spears into pruning hooks; nation shall not lift up sword against nation, neither shall they learn war anymore. O house of Jacob, come, let us walk in the light of the Lord.",
+                                type: "bibleot"
+                            },
+                            {
+                                type: "commentary",
+                                text: "This refers to Jesus preaching in Zion, bringing the new covenant to the world. This is also found in Micah 4:"
+                            },
+                            {
+                                title: "Micah 4:1-3",
+                                text: "It shall come to pass in the latter days that the mountain of the house of the Lord shall be established as the highest of the mountains, and it shall be lifted up above the hills; and peoples shall flow to it, <strong>and many nations shall come, and say: “Come, let us go up to the mountain of the Lord, to the house of the God of Jacob, <u>that he may teach us his ways and that we may walk in his paths.” For out of Zion shall go forth the law, and the word of the Lord from Jerusalem.</u> He shall judge between many peoples, and shall decide disputes for strong nations far away;</strong> and they shall beat their swords into plowshares, and their spears into pruning hooks; nation shall not lift up sword against nation, neither shall they learn war anymore;",
+                                type: "bibleot"
+                            },
+                            {
+                                type: "commentary",
+                                text: "More:"
+                            },
+                            {
+                                type: "bibleot",
+                                title: "Isaiah 12:2-6",
+                                text: "<strong>“Behold, God is my salvation;</strong> I will trust, and will not be afraid; for the Lord God is my strength and my song, <strong>and he has become my salvation.” With joy you will draw water from the wells of salvation. And you will say in that day: “Give thanks to the Lord, call upon his name, <red>make known his deeds among the peoples, proclaim that his name is exalted.</red> “Sing praises to the Lord, <u>for he has done gloriously; let this be made known in all the earth.</u> Shout, and sing for joy, O inhabitant of Zion, <red><u>for great in your midst is the Holy One of Israel.”</u></red></strong>"
+                            },
                             {
                                 type: "commentary",
                                 text: "1.3 God (the Messiah) coming as the Savior"
@@ -8694,28 +8807,28 @@
                             {
                                 title: "Isaiah 59:14-21",
                                 type: "bibleot",
-                                text: "Justice is turned back, and righteousness stands far away; for truth has stumbled in the public squares, and uprightness cannot enter. Truth is lacking, and he who departs from evil makes himself a prey. The Lord saw it, and it displeased him that there was no justice. <strong>He saw that there was no man, and wondered that there was no one to intercede; <u>then his own arm brought him salvation, and his righteousness upheld him. He put on righteousness as a breastplate, and a helmet of salvation on his head;</u> he put on garments of vengeance for clothing, and wrapped himself in zeal as a cloak. According to their deeds, so will he repay, wrath to his adversaries, repayment to his enemies; to the coastlands he will render repayment. So they shall fear the name of the Lord from the west, and his glory from the rising of the sun; for he will come like a rushing stream, which the wind of the Lord drives. <u>“And a Redeemer will come to Zion, to those in Jacob who turn from transgression,”</u> declares the Lord. “And as for me, this is my covenant with them,” says the Lord: “My Spirit that is upon you, and my words that I have put in your mouth, shall not depart out of your mouth, or out of the mouth of your offspring, or out of the mouth of your children's offspring,” says the Lord, “from this time forth and forevermore.”</strong>"
+                                text: "Justice is turned back, and righteousness stands far away; for truth has stumbled in the public squares, and uprightness cannot enter. Truth is lacking, and he who departs from evil makes himself a prey. The Lord saw it, and it displeased him that there was no justice. <strong>He saw that there was no man, and wondered that there was no one to intercede; <u>then his own arm brought him salvation, and his righteousness upheld him. He put on righteousness as a breastplate, and a helmet of salvation on his head;</u> he put on garments of vengeance for clothing, and wrapped himself in zeal as a cloak. According to their deeds, so will he repay, wrath to his adversaries, repayment to his enemies; to the coastlands he will render repayment. So they shall fear the name of the Lord from the west, and his glory from the rising of the sun; for he will come like a rushing stream, which the wind of the Lord drives. <u>“And a Redeemer will come to Zion, to those in Jacob who turn from transgression,”</u> declares the Lord. <blue>“And as for me, this is my covenant with them,” says the Lord: “My Spirit that is upon you, and my words that I have put in your mouth, shall not depart out of your mouth, or out of the mouth of your offspring, or out of the mouth of your children's offspring,” says the Lord, “from this time forth and forevermore.”</blue></strong>"
                             },
                             {
                                 type: "commentary",
-                                text: "Here God is coming as the savior, saving humanity from sin. The covenant with Him (the Messiah) shall stand forever."
+                                text: "Here God is coming as the savior, saving humanity from sin. <blue>The covenant with Him (the Messiah) shall stand forever.</blue>"
                             },
                             
                             {
                                 title: "Isaiah 35",
                                 type: "bibleot",
-                                text: "The wilderness and the dry land shall be glad; the desert shall rejoice and blossom like the crocus; it shall blossom abundantly and rejoice with joy and singing. The glory of Lebanon shall be given to it, the majesty of Carmel and Sharon. <strong>They shall see the glory of the Lord, the majesty of our God. Strengthen the weak hands, and make firm the feeble knees. Say to those who have an anxious heart, <u>“Be strong; fear not! Behold, your God will come with vengeance, with the recompense of God. He will come and save you.”</u> Then the eyes of the blind shall be opened, and the ears of the deaf unstopped; then shall the lame man leap like a deer, and the tongue of the mute sing for joy. For waters break forth in the wilderness, and streams in the desert; the burning sand shall become a pool, and the thirsty ground springs of water; in the haunt of jackals, where they lie down, the grass shall become reeds and rushes. And a highway shall be there, and it shall be called the Way of Holiness; the unclean shall not pass over it. It shall belong to those who walk on the way; even if they are fools, they shall not go astray. No lion shall be there, nor shall any ravenous beast come up on it; they shall not be found there, but the redeemed shall walk there. And the ransomed of the Lord shall return and come to Zion with singing; everlasting joy shall be upon their heads; they shall obtain gladness and joy, and sorrow and sighing shall flee away.</strong>"
+                                text: "The wilderness and the dry land shall be glad; the desert shall rejoice and blossom like the crocus; it shall blossom abundantly and rejoice with joy and singing. The glory of Lebanon shall be given to it, the majesty of Carmel and Sharon. <strong><red>They shall see the glory of the Lord, the majesty of our God. Strengthen the weak hands, and make firm the feeble knees. Say to those who have an anxious heart, <u>“Be strong; fear not! Behold, your God will come with vengeance, with the recompense of God. He will come and save you.”</red></u> <blue>Then the eyes of the blind shall be opened, and the ears of the deaf unstopped; then shall the lame man leap like a deer, and the tongue of the mute sing for joy.</blue> For waters break forth in the wilderness, and streams in the desert; the burning sand shall become a pool, and the thirsty ground springs of water; in the haunt of jackals, where they lie down, the grass shall become reeds and rushes. <purple>And a highway shall be there, and it shall be called the Way of Holiness; the unclean shall not pass over it. It shall belong to those who walk on the way; even if they are fools, they shall not go astray. No lion shall be there, nor shall any ravenous beast come up on it; they shall not be found there, <u>but the redeemed shall walk there.</u> And the ransomed of the Lord shall return and come to Zion with singing; everlasting joy shall be upon their heads; they shall obtain gladness and joy, and sorrow and sighing shall flee away.</purple></strong>"
                             },
                             {
                                 type: "commentary",
-                                text: "This passage further explains what God had planned for us: He will come Himself to save us. Verses 5-6 also say:<br><br><strong>Then the eyes of the blind shall be opened, and the ears of the deaf unstopped; then shall the lame man leap like a deer, and the tongue of the mute sing for joy.<br><br></strong>These are also all fulfilled, as Jesus healed the blind (Matthew 9:27-30, Mark 8:22-25, John 9:1-7, Matthew 20:29-34), the deaf (Mark 7:31-37), the lame (Matthew 15:30-31, John 5:2-9, Matthew 21:14), and the mute (Matthew 9:32-33, Matthew 12:22, Mark 7:37).<br><br>The last verses of the passage talk about the path of holiness that we now have through Him. He also said this:",
+                                text: "This passage further explains what God had planned for us: He will come HIMSELF to save us. Verses 5-6 also say:<br><br><strong><blue>Then the eyes of the blind shall be opened, and the ears of the deaf unstopped; then shall the lame man leap like a deer, and the tongue of the mute sing for joy.</blue><br><br></strong>These are also all fulfilled, as Jesus healed the blind (Matthew 9:27-30, Mark 8:22-25, John 9:1-7, Matthew 20:29-34), the deaf (Mark 7:31-37), the lame (Matthew 15:30-31, John 5:2-9, Matthew 21:14), and the mute (Matthew 9:32-33, Matthew 12:22, Mark 7:37).<br><br><purple>The last verses of the passage talk about the path of holiness that we now have through Him.</purple> He also said this:",
 
 
                             },
                             {
                                 title: "Matthew 11:1-5",
                                 type: "bible",
-                                text: "When Jesus had finished instructing his twelve disciples, he went on from there to teach and preach in their cities. Now when John heard in prison about the deeds of the Christ, he sent word by his disciples and said to him, “Are you the one who is to come, or shall we look for another?” And Jesus answered them, “Go and tell John what you hear and see: the blind receive their sight and the lame walk, lepers are cleansed and the deaf hear, and the dead are raised up, and the poor have good news preached to them."
+                                text: "When Jesus had finished instructing his twelve disciples, he went on from there to teach and preach in their cities. Now when John heard in prison about the deeds of the Christ, he sent word by his disciples and said to him, “Are you the one who is to come, or shall we look for another?” And Jesus answered them, “Go and tell John what you hear and see: <strong>the blind receive their sight and the lame walk, lepers are cleansed and the deaf hear,</strong> and the dead are raised up, and the poor have good news preached to them."
                             },
                             {
                                 type: "commentary",
@@ -8776,16 +8889,49 @@
                                 type: "bibleot",
                                 text: "Hear now, O Joshua the high priest, you and your friends who sit before you, for they are men who are a sign: <strong>behold, I will bring my servant the Branch. For behold, on the stone that I have set before Joshua, on a single stone with seven eyes, I will engrave its inscription, declares the Lord of hosts, <u>and I will remove the iniquity of this land in a single day.</u></strong>"
                             },
+                            {
+                                type: "bibleot",
+                                title: "Isaiah 49:5-7",
+                                text: "And now the Lord says, he who formed me from the womb to be his servant, to bring Jacob back to him; and that Israel might be gathered to him— for I am honored in the eyes of the Lord, and my God has become my strength— he says: “It is too light a thing that you should be my servant to raise up the tribes of Jacob and to bring back the preserved of Israel; <strong>I will make you as a light for the nations, that my salvation may reach to the end of the earth.”Thus says the Lord, the Redeemer of Israel and his Holy One, to one deeply despised, abhorred by the nation,</strong> the servant of rulers: “Kings shall see and arise; princes, and they shall prostrate themselves; because of the Lord, who is faithful, the Holy One of Israel, who has chosen you.”"
+                            },
+                           
+
+                            {
+                                type: "bibleot",
+                                title: "Isaiah 52:6-12",
+                                text: "Therefore my people shall know my name. Therefore in that day they shall know that it is I who speak; here I am. <strong>How beautiful upon the mountains are <u>the feet of him who brings good news,</u>[THE GOSPEL] who publishes peace, who brings good news of happiness, <u>who publishes salvation,</u> who says to Zion, “Your God reigns.” The voice of your watchmen—they lift up their voice; together they sing for joy; <u>for eye to eye they see the return of the Lord to Zion. Break forth together into singing, you waste places of Jerusalem, for the Lord has comforted his people; he has redeemed Jerusalem. The Lord has bared his holy arm before the eyes of all the nations, and all the ends of the earth shall see the salvation of our God.</u></strong> Depart, depart, go out from there; touch no unclean thing; go out from the midst of her; purify yourselves, you who bear the vessels of the Lord. For you shall not go out in haste, and you shall not go in flight, for the Lord will go before you, and the God of Israel will be your rear guard."
+                            },
+                            
 
                             {
                                 title: "Daniel 9:24",
                                 type: "bibleot",
-                                text: " “Seventy weeks are decreed about your people and your holy city, <strong>to finish the transgression, to put an end to sin, and to atone for iniquity, to bring in everlasting righteousness, to seal both vision and prophet, and to anoint a most holy place.</strong>"
+                                text: " “Seventy weeks are decreed about your people and your holy city, <strong><red>to finish the transgression, to put an end to sin, and to atone for iniquity,</red> to bring in everlasting righteousness, to seal both vision and prophet, and to anoint a most holy place.</strong>"
                             },
                             {
                                 type: "commentary",
                                 text: "This prophecy also tells us when exactly He would come, more on that later in this chapter."
                             },
+                            {
+                                type: "commentary",
+                                text: "More:"
+                            },
+                            {
+                                title: "Hosea 1:7",
+                                type: "bibleot",
+                                text: "But I will have mercy on the house of Judah, <strong><red>and I will save them by the Lord their God.</red> I will <u>not</u> save them by bow or by sword or by war or by horses or by horsemen.”</strong>"
+                            },
+                            {
+                                title: "Isaiah 45:15-23",
+                                type: "bibleot",
+                                text: "Truly, you are a God who hides himself, <strong>O God of Israel, the Savior.</strong> All of them are put to shame and confounded; the makers of idols go in confusion together. <strong>But Israel is saved by the Lord with everlasting salvation;</strong> you shall not be put to shame or confounded to all eternity. For thus says the Lord, who created the heavens (he is God!), who formed the earth and made it (he established it; he did not create it empty, he formed it to be inhabited!): “I am the Lord, and there is no other. I did not speak in secret, in a land of darkness; I did not say to the offspring of Jacob, ‘Seek me in vain.’ I the Lord speak the truth; I declare what is right. Assemble yourselves and come; draw near together, you survivors of the nations! They have no knowledge who carry about their wooden idols, and keep on praying to a god that cannot save. Declare and present your case; let them take counsel together! Who told this long ago? Who declared it of old? Was it not I, the Lord? <strong>And there is no other god besides me, a righteous God and a Savior; there is none besides me. Turn to me and be saved, all the ends of the earth! For I am God, and there is no other.</strong> By myself I have sworn; from my mouth has gone out in righteousness a word that shall not return: <strong>‘To me every knee shall bow, every tongue shall swear allegiance.’</strong>"
+                            },
+                            {
+                                title: "Philippians 2:9-11",
+                                type: "bible",
+                                text: "Therefore God has highly exalted him and bestowed on him the name that is above every name, <strong>so that at the name of Jesus every knee should bow, in heaven and on earth and under the earth, and every tongue confess that Jesus Christ is Lord, to the glory of God the Father.</strong>"
+                            },
+                            
                             {
                                 type: "commentary",
                                 text: "The Bible is also very clear about the fact that there is only one savior:"
@@ -8801,6 +8947,12 @@
                                 type: "bibleot",
                                 text: "But I am the Lord your God from the land of Egypt; you know no God but me, <strong>and besides me there is no savior.</strong>"
                             },
+                             {
+                                title: "Isaiah 54:4-8",
+                                text: "Fear not, for you will not be ashamed; be not confounded, for you will not be disgraced; for you will forget the shame of your youth, and the reproach of your widowhood you will remember no more. For your Maker is your husband, the Lord of hosts is his name; <strong>and the Holy One of Israel is your Redeemer, the God of the whole earth he is called.</strong> For the Lord has called you like a wife deserted and grieved in spirit, like a wife of youth when she is cast off, says your God. For a brief moment I deserted you, but with great compassion I will gather you. In overflowing anger for a moment I hid my face from you, but with everlasting love I will have compassion on you, <strong>says the Lord, your Redeemer.</strong>",
+                                type: "bibleot"
+                            },
+                            
                             {
                                 title: "2 Peter 1:1",
                                 type: "bible",
@@ -8812,7 +8964,7 @@
                             },
                             {
                                 type: "commentary",
-                                text: "1.4 God (the Messiah) as an atonement:"
+                                text: "1.4 God (the Messiah) as an atonement (the pain, suffering and death of the Messiah):"
                             },
                             {
                                 title: "Mark 10:45",
@@ -8930,14 +9082,20 @@
                                 text: "But when they came to Jesus and saw that he was already dead, they did not break his legs. But one of the soldiers pierced his side with a spear, and at once there came out blood and water. He who saw it has borne witness—his testimony is true, and he knows that he is telling the truth—that you also may believe. For these things took place that the Scripture might be fulfilled: “Not one of his bones will be broken.”"
                             },
                             {type: "commentary", text: "More prophecies:"},
+
+                            {
+                                title: "Isaiah 50:3-6",
+                                text: "I clothe the heavens with blackness and make sackcloth their covering. The Lord God has given me the tongue of those who are taught, that I may know how to sustain with a word him who is weary. Morning by morning he awakens; he awakens my ear to hear as those who are taught. The Lord God has opened my ear, and I was not rebellious; I turned not backward. <strong>I gave my back to those who strike, and my cheeks to those who pull out the beard; I hid not my face from disgrace and spitting.</strong>",
+                                type: "bibleot"
+                            },
                             {
                                 title: "Daniel 9:24-26",
                                 type: "bibleot",
-                                text: "“Seventy weeks are decreed about your people and your holy city, <strong><u>to finish the transgression, to put an end to sin, and to atone for iniquity,</u></strong> to bring in everlasting righteousness, to seal both vision and prophet, and to anoint a most holy place. Know therefore and understand that from the going out of the word to restore and build Jerusalem to the coming of an anointed one, a prince, there shall be seven weeks. And for sixty-two weeks it shall be built again with squares and moat, but in a troubled time. <strong>And after the sixty-two weeks, <u>an anointed one shall be cut off and shall have nothing.</u></strong> And the people of the prince who is to come shall destroy the city and the sanctuary. Its end shall come with a flood, and to the end there shall be war. Desolations are decreed."
+                                text: "“Seventy weeks are decreed about your people and your holy city, <strong><u><red>to finish the transgression, to put an end to sin, and to atone for iniquity,</red></u></strong> to bring in everlasting righteousness, to seal both vision and prophet, and to anoint a most holy place. Know therefore and understand that from the going out of the word to restore and build Jerusalem to the coming of an anointed one, a prince, there shall be seven weeks. And for sixty-two weeks it shall be built again with squares and moat, but in a troubled time. <strong><red>And after the sixty-two weeks, <u>an anointed one shall be cut off and shall have nothing.</red></u></strong> And the people of the prince who is to come shall destroy the city and the sanctuary. Its end shall come with a flood, and to the end there shall be war. Desolations are decreed."
                             },
                             {
                                 type: "commentary",
-                                text: "Here it says that there would be an END to sin, and the anointed one shall be cut off (i.e killed)."
+                                text: "Here it says that there would be an END to sin and an ATONEMENT for sin, and the anointed one shall be cut off (i.e killed)."
                             },
                             
                             
@@ -8960,7 +9118,7 @@
                                 text: "Here again, the heel of the woman's offspring (the Messiah, Jesus) shall be bruised by Satan (which happened on the cross), but he (the Messiah, Jesus) shall crush his head, which He did, by defeating sin and death on the cross through the resurrection."
                             },
                              {
-                                title: "Isaiah 52:13-53:12",
+                                title: "Isaiah 52:13 - 53:12",
                                 type: "bibleot",
                                 text: "<blue>Behold, my servant shall act wisely; he shall be high and lifted up, and shall be exalted.</blue> <green>As many were astonished at you— his appearance was so marred, beyond human semblance, and his form beyond that of the children of mankind—</green><blue>so shall he sprinkle many nations. Kings shall shut their mouths because of him, for that which has not been told them they see, and that which they have not heard they understand.</blue><red> Who has believed what he has heard from us? And to whom has the arm of the Lord been revealed?</red><blue> For he grew up before him like a young plant, <strong>and like a root out of dry ground;</strong> he had no form or majesty that we should look at him, and no beauty that we should desire him.</blue> <green>He was despised and rejected by men, a man of sorrows and acquainted with grief; and as one from whom men hide their faces he was despised, <blue>and <strong>we</strong> esteemed him not.</blue> Surely he has borne our griefs and carried our sorrows; <blue>yet <strong>we</strong> esteemed him stricken, smitten by God, and afflicted.</blue> <strong>But he was pierced for our transgressions; he was crushed for our iniquities;</strong> upon him was the chastisement that brought us peace, and with his wounds we are healed. All we like sheep have gone astray; we have turned—every one—to his own way; <strong>and the Lord has laid on him the iniquity of us all.</strong><blue> He was oppressed, and he was afflicted, yet he opened not his mouth; like a lamb that is led to the slaughter, and like a sheep that before its shearers is silent, so he opened not his mouth.</blue> By oppression and judgment he was taken away; and as for his generation, <strong>who considered that he was cut off out of the land of the living,</strong> stricken for the transgression of my people? <blue>And they made his grave with the wicked and with a rich man in his death, although he had done no violence, and there was no deceit in his mouth. Yet it was the will of the Lord to crush him; he has put him to grief; when his soul makes an offering for guilt, he shall see his offspring; <strong>he shall prolong his days;</strong> the will of the Lord shall prosper in his hand.</blue></green><green> Out of the anguish of his soul he shall see and be satisfied; by his knowledge shall the righteous one, my servant, make many to be accounted righteous, and he shall bear their iniquities. Therefore I will divide him a portion with the many and he shall divide the spoil with the strong, because he poured out his soul to death and was numbered with the transgressors; yet he bore the sin of many, and makes intercession for the transgressors.</green>"
                             },
@@ -8970,35 +9128,240 @@
                             },
 
 
+                            
+                             {
+                                title: "Zechariah 13:1-9",
+                                type: "bibleot",
+                                text: "<green>On that day there shall be a fountain opened for the house of David and the inhabitants of Jerusalem, to cleanse them from sin and uncleanness.</green> [...] <red>“Awake, O sword, against my shepherd, against the man who stands next to me,” declares the Lord of hosts. “Strike the shepherd, and the sheep will be scattered;</red> I will turn my hand against the little ones. In the whole land, declares the Lord, <blue>two thirds shall be cut off and perish, and one third shall be left alive. And I will put this third into the fire, and refine them as one refines silver, and test them as gold is tested. They will call upon my name, and I will answer them. I will say, ‘They are my people’; and they will say, ‘The Lord is my God.’”</blue>"
+                            },
+                               {
+                                title: "Matthew 26:30-35",
+                                type: "bible",
+                                text: "And when they had sung a hymn, they went out to the Mount of Olives. <red>Then Jesus said to them, “You will all fall away because of me this night. For it is written, ‘I will strike the shepherd, and the sheep of the flock will be scattered.’</red> But after I am raised up, I will go before you to Galilee.” Peter answered him, “Though they all fall away because of you, I will never fall away.” Jesus said to him, “Truly, I tell you, this very night, before the rooster crows, you will deny me three times.” Peter said to him, “Even if I must die with you, I will not deny you!” And all the disciples said the same."
+                            },
                             {
                                 type: "commentary",
-                                text: "THIS IS NOT DONE YET AT ALL. 95% HAS NOT BEEN ADDED TO THE SITE."
-                            },
-                             {
-                                title: "",
-                                type: "bibleot",
-                                text: ""
-                            },
-                             {
-                                title: "",
-                                type: "bibleot",
-                                text: ""
-                            },
-                             {
-                                title: "",
-                                type: "bibleot",
-                                text: ""
-                            },
-                             {
-                                title: "",
-                                type: "bibleot",
-                                text: ""
+                                text: "<green>sin removed</green><br><red>suffering of the Messiah, betrayal and anxiety of His followers</red><br><blue>'two thirds (symbol for the majority) shall be cut off' -> most people (in Israel) won't believe in the Messiah, 'one third (a minority)', these people that are faithful will not be left untouched: they will undergo refining fire ->  trials and purification (Christians persecuted and tested)"
                             },
                             {
-                                title: "",
-                                type: "bibleot",
-                                text: ""
+                                type: "commentary",
+                                text: "Jesus as the Shepherd:"
                             },
+                              {
+                                title: "John 10:1-5",
+                                type: "bible",
+                                text: "“Truly, truly, I say to you, he who does not enter the sheepfold by the door but climbs in by another way, that man is a thief and a robber. But he who enters by the door is the shepherd of the sheep. To him the gatekeeper opens. The sheep hear his voice, and he calls his own sheep by name and leads them out. When he has brought out all his own, he goes before them, and the sheep follow him, for they know his voice. A stranger they will not follow, but they will flee from him, for they do not know the voice of strangers.”"
+                            }, 
+                           
+                              {
+                                title: "John 10:11-16",
+                                type: "bible",
+                                text: "I am the good shepherd. The good shepherd lays down his life for the sheep. He who is a hired hand and not a shepherd, who does not own the sheep, sees the wolf coming and leaves the sheep and flees, and the wolf snatches them and scatters them. He flees because he is a hired hand and cares nothing for the sheep. I am the good shepherd. I know my own and my own know me, just as the Father knows me and I know the Father; and I lay down my life for the sheep. 16 And I have other sheep that are not of this fold. I must bring them also, and they will listen to my voice. So there will be one flock, one shepherd."
+                            },
+                           
+                              {
+                                title: "Matthew 9:36",
+                                type: "bible",
+                                text: "When he saw the crowds, he had compassion for them, because they were harassed and helpless, like sheep without a shepherd."
+                            },
+                            {
+                                type: "commentary",
+                                text: "Further, when Jesus was hanging on the cross, he said this:"
+                            },
+                            {
+                                title: "Matthew 27:45-46",
+                                type: "bible",
+                                text: "Now from the sixth hour there was darkness over all the land until the ninth hour. And about the ninth hour Jesus cried out with a loud voice, saying, <strong><red>“Eli, Eli, lema sabachthani?” that is, “My God, my God, why have you forsaken me?”</red></strong>"
+                            },
+                            {
+                                type: "commentary",
+                                text: "What was he quoting?"
+                            },
+                              {
+                                title: "Psalm 22",
+                                type: "bibleot",
+                                text: "<strong><red>My God, my God, why have you forsaken me?</red></strong> Why are you so far from saving me, from the words of my groaning? O my God, I cry by day, but you do not answer, and by night, but I find no rest. Yet you are holy, enthroned on the praises of Israel. In you our fathers trusted; they trusted, and you delivered them. To you they cried and were rescued; in you they trusted and were not put to shame. <green>But I am a worm and not a man, scorned by mankind and despised by the people. All who see me mock me;</green> <blue>they make mouths at me; they wag their heads; <strong>“He trusts in the Lord; let him deliver him; let him rescue him, for he delights in him!”</strong></blue><green> Yet you are he who took me from the womb; you made me trust you at my mother's breasts. On you was I cast from my birth, and from my mother's womb you have been my God.</green><blue> Be not far from me, for trouble is near, and there is none to help. Many bulls encompass me; strong bulls of Bashan surround me; they open wide their mouths at me, like a ravening and roaring lion. <strong>I am poured out like water, and all my bones are out of joint; my heart is like wax; it is melted within my breast; my strength is dried up like a potsherd, and my tongue sticks to my jaws; you lay me in the dust of death. For dogs encompass me; a company of evildoers encircles me; <u>they have pierced my hands and feet—</u> I can count all my bones— they stare and gloat over me; <u>they divide my garments among them, and for my clothing they cast lots.</u></strong></blue><purple> But you, O Lord, do not be far off! O you my help, come quickly to my aid! Deliver my soul from the sword, my precious life from the power of the dog! Save me from the mouth of the lion! You have rescued me from the horns of the wild oxen! I will tell of your name to my brothers; in the midst of the congregation I will praise you: You who fear the Lord, praise him! All you offspring of Jacob, glorify him, and stand in awe of him, all you offspring of Israel! For he has not despised or abhorred the affliction of the afflicted, and he has not hidden his face from him, but has heard, when he cried to him. From you comes my praise in the great congregation; my vows I will perform before those who fear him. The afflicted shall eat and be satisfied; those who seek him shall praise the Lord! May your hearts live forever! All the ends of the earth shall remember and turn to the Lord, and all the families of the nations shall worship before you. For kingship belongs to the Lord, and he rules over the nations. All the prosperous of the earth eat and worship; before him shall bow all who go down to the dust, even the one who could not keep himself alive. Posterity shall serve him; it shall be told of the Lord to the coming generation; they shall come and proclaim his righteousness to a people yet unborn, that he has done it.</purple>"
+                            }
+                            ,
+                            {
+                                type: "commentary",
+                                text: "<green>General themes:</green><br><br> <green>But I am a worm and not a man, scorned by mankind and despised by the people. All who see me mock me;</green> - the Messiah rejected and despised (fulfillment: Mark 8:31, Matthew 27:31, Matthew 27:39-43)<br><br><green>Yet you are he who took me from the womb; you made me trust you at my mother's breasts. On you was I cast from my birth, and from my mother's womb you have been my God.</green> - human mother, divine mission since birth (fulfillment: Luke 1:30-33, 35, Matthew 1:20-21, Galatians 4:4-5)<br><br><blue>Direct prophecy:</blue><br><br><strong>[1]</strong> <blue>they make mouths at me; they wag their heads; “He trusts in the Lord; let him deliver him; let him rescue him, for he delights in him!”</blue> - specific mocking made against the Messiah (fulfillment: Matthew 27:39-43, Mark 15:29-32, Luke 23:35)<br><br><strong>[2]</strong> <blue>Be not far from me, for trouble is near, and there is none to help. Many bulls encompass me; strong bulls of Bashan surround me; they open wide their mouths at me, like a ravening and roaring lion.</blue> - they seek His death, nobody helps him, people mock him (fulfillment: Matthew 26:55-56, Mark 14:43, 46, Luke 23:10-11, Matthew 27:20-22, John 19:6)<br><br><strong>[3]</strong> <blue>I am poured out like water, and all my bones are out of joint; my heart is like wax; it is melted within my breast; my strength is dried up like a potsherd, and my tongue sticks to my jaws; you lay me in the dust of death.</blue> - blood and water poured out when they pierced His side, He thirsted (fulfillment: John 19:34, John 19:28)<br><br><strong>[4] </strong><blue>For dogs encompass me; a company of evildoers encircles me; they have pierced my hands and feet— I can count all my bones— they stare and gloat over me;</blue> - encircled by enemies, hands and feet pierced (fulfillment: John 19:18, Luke 23:33-35)<br><br><strong>[5] </strong><blue>they divide my garments among them, and for my clothing they cast lots.</blue> - they divide His garments and cast lots for it (fulfillment: Matthew 27:35, Mark 15:24, John 19:23-24, Luke 23:34-35)<br><br><purple>Defeat of death, the resurrection, God glorified:</purple><br><br><purple>But you, O Lord, do not be far off! O you my help, come quickly to my aid! Deliver my soul from the sword, my precious life from the power of the dog! Save me from the mouth of the lion! You have rescued me from the horns of the wild oxen!</purple> - 'into your hands i commit my spirit', defeat of death (and Satan) (fulfillment: Luke 23:46, Hebrews 2:14)<br><br><purple>I will tell of your name to my brothers; in the midst of the congregation I will praise you: You who fear the Lord, praise him! All you offspring of Jacob, glorify him, and stand in awe of him, all you offspring of Israel!</purple> - His resurrection declared (fulfillment: John 20:17, Matthew 28:9-10, Romans 15:9-11)<br><br><purple>All the ends of the earth shall remember and turn to the Lord, and all the families of the nations shall worship before you. For kingship belongs to the Lord, and he rules over the nations.</purple> - He shall be the governor of the nations (fulfillment: Colossians 1:16)<br><br><purple>they shall come and proclaim his righteousness to a people yet unborn, that he has done it.</purple> - 'it is finished' (fulfillment: John 19:30; Heb 10:10-12, 14, 18)"
+                            },
+                              {
+                                title: "Matthew 27:39-43",
+                                type: "bible",
+                                text: "<strong>[1]</strong> And those who passed by derided him, wagging their heads and saying, “You who would destroy the temple and rebuild it in three days, save yourself! If you are the Son of God, come down from the cross.” So also the chief priests, with the scribes and elders, mocked him, saying, “He saved others; he cannot save himself. He is the King of Israel; let him come down now from the cross, and we will believe in him. He trusts in God; let God deliver him now, if he desires him. For he said, ‘I am the Son of God.’”"
+                            },
+                             {
+                                title: "Matthew 27:20-22",
+                                type: "bible",
+                                text: "<strong>[2]</strong> Now the chief priests and the elders persuaded the crowd to ask for Barabbas and destroy Jesus. The governor again said to them, “Which of the two do you want me to release for you?” And they said, “Barabbas.” Pilate said to them, “Then what shall I do with Jesus who is called Christ?” They all said, “Let him be crucified!”"
+                            },
+                             {
+                                title: "Matthew 26:55-56",
+                                type: "bible",
+                                text: "<strong>[2]</strong> At that hour Jesus said to the crowds, “Have you come out as against a robber, with swords and clubs to capture me? Day after day I sat in the temple teaching, and you did not seize me. But all this has taken place that the Scriptures of the prophets might be fulfilled.” Then all the disciples left him and fled."
+                            },
+                             {
+                                title: "John 19:28-34",
+                                type: "bible",
+                                text: "<strong>[3]</strong> After this, Jesus, knowing that all was now finished, said (to fulfill the Scripture), “I thirst.” A jar full of sour wine stood there, so they put a sponge full of the sour wine on a hyssop branch and held it to his mouth. When Jesus had received the sour wine, he said, “It is finished,” and he bowed his head and gave up his spirit. Since it was the day of Preparation, and so that the bodies would not remain on the cross on the Sabbath (for that Sabbath was a high day), the Jews asked Pilate that their legs might be broken and that they might be taken away. So the soldiers came and broke the legs of the first, and of the other who had been crucified with him. But when they came to Jesus and saw that he was already dead, they did not break his legs. But one of the soldiers pierced his side with a spear, and at once there came out blood and water. "
+                            },
+                             {
+                                title: "Luke 23:3335",
+                                type: "bible",
+                                text: "<strong>[4]</strong> And when they came to the place that is called The Skull, there they crucified him, and the criminals, one on his right and one on his left. And Jesus said, “Father, forgive them, for they know not what they do.” And they cast lots to divide his garments. And the people stood by, watching, but the rulers scoffed at him, saying, “He saved others; let him save himself, if he is the Christ of God, his Chosen One!”"
+                            },
+                             {
+                                title: "Mark 15:24",
+                                type: "bible",
+                                text: "<strong>[5]</strong> And they crucified him and divided his garments among them, casting lots for them, to decide what each should take."
+                            },
+                            {
+                                type: "commentary",
+                                text: "Further:"
+                            },
+                             {
+                                title: "Psalm 2",
+                                type: "bibleot",
+                                text: "<strong>Why do the nations rage and the peoples plot in vain? The kings of the earth set themselves, and the rulers take counsel together, <u>against the Lord and against his Anointed,</u></strong> saying, “Let us burst their bonds apart and cast away their cords from us.” He who sits in the heavens laughs; the Lord holds them in derision. Then he will speak to them in his wrath, and terrify them in his fury, saying, <blue>“As for me, I have set my King on Zion, my holy hill.” I will tell of the decree: The Lord said to me, “You are my Son; today I have begotten you. Ask of me, and I will make the nations your heritage, and the ends of the earth your possession.</blue> You shall break them with a rod of iron and dash them in pieces like a potter’s vessel.” Now therefore, O kings, be wise; be warned, O rulers of the earth. Serve the Lord with fear, and rejoice with trembling. Kiss the Son, lest he be angry, and you perish in the way, for his wrath is quickly kindled. <strong><u>Blessed are all who take refuge in him.</u></strong>"
+                            },
+                            {
+                                type: "commentary",
+                                text: "References:"
+                            },
+                             {
+                                title: "Acts 4:25-27",
+                                type: "bible",
+                                text: "who through the mouth of our father David, your servant, said by the Holy Spirit,<blue> “‘Why did the Gentiles rage, and the peoples plot in vain? The kings of the earth set themselves, and the rulers were gathered together, against the Lord and against his Anointed’— for truly in this city there were gathered together against your holy servant Jesus, whom you anointed, both Herod and Pontius Pilate, along with the Gentiles and the peoples of Israel</blue>"
+                            },
+                            {
+                                title: "Matthew 3:16-17",
+                                type: "bible",
+                                text: "And when Jesus was baptized, immediately he went up from the water, and behold, the heavens were opened to him, and he saw the Spirit of God descending like a dove and coming to rest on him; <blue>and behold, a voice from heaven said, “This is my beloved Son, with whom I am well pleased.”</blue>"
+                            },
+                            {
+                                title: "Matthew 28:18-19",
+                                type: "bible",
+                                text: "And Jesus came and said to them, <blue>“All authority in heaven and on earth has been given to me.</blue> Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit"
+                            },
+                            {
+                                title: "Revelation 2:26-28",
+                                type: "bible",
+                                text: "The one who conquers and who keeps my works until the end, <blue>to him I will give authority over the nations, and he will rule them with a rod of iron,</blue> as when earthen pots are broken in pieces, even as I myself have received authority from my Father. And I will give him the morning star."
+                            },
+                            {
+                                type: "commentary",
+                                text: "('Ask of me, and I will make the nations your heritage, and the ends of the earth your possession.' also refers to Christ being glorified and obeyed in all nations)"
+                            },
+                            {
+                                type: "commentary",
+                                text: "('As for me, I have set my King on Zion, my holy hill.' refers to Christ's exaltation through His resurrection)"
+                            },
+
+
+                            {
+                                type: "commentary",
+                                text: "1.5 The Resurrection"
+                            },
+                            {
+                                title: "Psalm 30",
+                                type: "bibleot",
+                                text: "<strong>I will extol you, O Lord, for you have drawn me up and have not let my foes rejoice over me. O Lord my God, I cried to you for help, and you have healed me. <u>O Lord, you have brought up my soul from Sheol; you restored me to life from among those who go down to the pit.</u></strong> Sing praises to the Lord, O you his saints, and give thanks to his holy name. For his anger is but for a moment, and his favor is for a lifetime. Weeping may tarry for the night, but joy comes with the morning. As for me, I said in my prosperity, “I shall never be moved.” By your favor, O Lord, you made my mountain stand strong; you hid your face; I was dismayed. To you, O Lord, I cry, and to the Lord I plead for mercy: “What profit is there in my death, if I go down to the pit? Will the dust praise you? Will it tell of your faithfulness? Hear, O Lord, and be merciful to me! O Lord, be my helper!” <strong>You have turned for me my mourning into dancing; you have loosed my sackcloth and clothed me with gladness, that my glory may sing your praise and not be silent. O Lord my God, I will give thanks to you forever.</strong>"
+                            },
+                            {
+                                title: "Isaiah 25",
+                                type: "bibleot",
+                                text: "O Lord, you are my God; I will exalt you; I will praise your name, for you have done wonderful things, plans formed of old, faithful and sure. For you have made the city a heap, the fortified city a ruin; the foreigners' palace is a city no more; it will never be rebuilt. Therefore strong peoples will glorify you; cities of ruthless nations will fear you. <blue>For you have been a stronghold to the poor, a stronghold to the needy in his distress, a shelter from the storm and a shade from the heat; for the breath of the ruthless is like a storm against a wall, like heat in a dry place.</blue> You subdue the noise of the foreigners; as heat by the shade of a cloud, so the song of the ruthless is put down. On this mountain the Lord of hosts will make for all peoples a feast of rich food, a feast of well-aged wine, of rich food full of marrow, of aged wine well refined. <strong>And he will swallow up on this mountain the covering that is cast over all peoples, the veil that is spread over all nations. <u><red>He will swallow up death forever;</red></u> and the Lord God will wipe away tears from all faces, and the reproach of his people he will take away from all the earth, for the Lord has spoken. <u><red>It will be said on that day, “Behold, this is our God; we have waited for him, that he might save us. This is the Lord; we have waited for him; let us be glad and rejoice in his salvation.”</red></u> For the hand of the Lord will rest on this mountain, and Moab shall be trampled down in his place, as straw is trampled down in a dunghill.</strong> And he will spread out his hands in the midst of it as a swimmer spreads his hands out to swim, but the Lord will lay low his pompous pride together with the skill of his hands. And the high fortifications of his walls he will bring down, lay low, and cast to the ground, to the dust."
+                            },
+
+                            
+                            {
+                                type: "bibleot",
+                                title: "Isaiah 52:6-12",
+                                text: "Therefore my people shall know my name. Therefore in that day they shall know that it is I who speak; here I am. <strong>How beautiful upon the mountains are <u>the feet of him who brings good news,</u>[THE GOSPEL] who publishes peace, who brings good news of happiness, <u>who publishes salvation,</u> who says to Zion, “Your God reigns.” The voice of your watchmen—they lift up their voice; together they sing for joy; <u>for eye to eye they see the return of the Lord to Zion. Break forth together into singing, you waste places of Jerusalem, for the Lord has comforted his people; he has redeemed Jerusalem. The Lord has bared his holy arm before the eyes of all the nations, and all the ends of the earth shall see the salvation of our God.</u></strong> Depart, depart, go out from there; touch no unclean thing; go out from the midst of her; purify yourselves, you who bear the vessels of the Lord. For you shall not go out in haste, and you shall not go in flight, for the Lord will go before you, and the God of Israel will be your rear guard."
+                            },
+
+                            {
+                                title: "Isaiah 55:1-5",
+                                type: "bibleot",
+                                text: "Come, everyone who thirsts, come to the waters; and he who has no money, come, buy and eat! Come, buy wine and milk without money and without price. Why do you spend your money for that which is not bread, and your labor for that which does not satisfy? Listen diligently to me, and eat what is good, and delight yourselves in rich food. <strong>Incline your ear, and come to me; hear, <u>that your soul may live; and I will make with you an everlasting covenant, my steadfast, sure love for David.</u> Behold, I made him a witness to the peoples, a leader and commander for the peoples. Behold, you shall call a nation that you do not know, and a nation that did not know you shall run to you, because of the Lord your God, and of the Holy One of Israel, for he has glorified you.</strong>"
+                            },
+                            {
+                                title: "Hosea 13:12-14",
+                                type: "bibleot",
+                                text: "The iniquity of Ephraim is bound up; his sin is kept in store. The pangs of childbirth come for him, but he is an unwise son, for at the right time he does not present himself at the opening of the womb. <strong>I shall ransom them from the power of Sheol; I shall redeem them from Death. O Death, where are your plagues? O Sheol, where is your sting? Compassion is hidden from my eyes.</strong>"
+                            },
+                            {
+                                title: "1 Corinthians 15:54-57",
+                                type: "bible",
+                                text: "When the perishable puts on the imperishable, and the mortal puts on immortality, then shall come to pass the saying that is written: <strong>“Death is swallowed up in victory.” “O death, where is your victory? O death, where is your sting?” The sting of death is sin, and the power of sin is the law. But thanks be to God, who gives us the victory through our Lord Jesus Christ.</strong>"
+                            },
+                            {
+                                title: "Jonah 1:17",
+                                type: "bibleot",
+                                text: "And the Lord appointed a great fish to swallow up Jonah. And Jonah was in the belly of the fish three days and three nights."
+                            },
+                            {
+                                title: "Matthew 12:39-41",
+                                type: "bible",
+                                text: "But he answered them, “An evil and adulterous generation seeks for a sign, but no sign will be given to it except the sign of the prophet Jonah. For just as Jonah was three days and three nights in the belly of the great fish, so will the Son of Man be three days and three nights in the heart of the earth. The men of Nineveh will rise up at the judgment with this generation and condemn it, for they repented at the preaching of Jonah, and behold, something greater than Jonah is here."
+                            },
+                            {
+                                type: "commentary",
+                                text: "Again:"
+                            },
+                            {
+                                title: "Isaiah 53",
+                                type: "bibleot",
+                                text: "<strong>But he was pierced for our transgressions; he was crushed for our iniquities;</strong> upon him was the chastisement that brought us peace,and with his wounds we are healed. [...] By oppression and judgment he was taken away; and as for his generation, who considered that <strong><u>he was cut off out of the land of the living, stricken for the transgression of my people?</strong></u> [...] Yet it was the will of the Lord to crush him; he has put him to grief; when his soul makes an offering for guilt, he shall see his offspring; <strong><u>he shall prolong his days;</u></strong> the will of the Lord shall prosper in his hand. Out of the anguish of his soul he shall see and be satisfied; <strong>by his knowledge shall the righteous one, my servant, make many to be accounted righteous, and he shall bear their iniquities.</strong>"
+                            },
+
+                            {
+                                title: "Psalm 22:16-21",
+                                type: "bibleot",
+                                text: "For dogs encompass me; a company of evildoers encircles me; <strong><u>they have pierced my hands and feet— I can count all my bones— they stare and gloat over me;</u></strong> they divide my garments among them, and for my clothing they cast lots. <strong>But you, O Lord, do not be far off! O you my help, come quickly to my aid! Deliver my soul from the sword, my precious life from the power of the dog! Save me from the mouth of the lion! <u>You have rescued me from the horns of the wild oxen!</u></strong>"
+                            },
+
+                            {
+                                type: "bibleot",
+                                title: "Isaiah 12:2-6",
+                                text: "<strong>“Behold, God is my salvation;</strong> I will trust, and will not be afraid; for the Lord God is my strength and my song, <strong>and he has become my salvation.” With joy you will draw water from the wells of salvation. And you will say in that day: “Give thanks to the Lord, call upon his name, <red>make known his deeds among the peoples, proclaim that his name is exalted.</red> “Sing praises to the Lord, <u>for he has done gloriously; let this be made known in all the earth.</u> Shout, and sing for joy, O inhabitant of Zion, <red><u>for great in your midst is the Holy One of Israel.”</u></red></strong>"
+                            },
+
+                            {
+                                type: "commentary",
+                                text: "(part 1 not finished yet)"
+                            },
+                            {
+                                type: "commentary",
+                                text: "2. When would the Messiah come?"
+                            },
+                            {
+                                type: "commentary",
+                                text: "Numerous prophetic passages appear to indicate a specific period in history when the Messiah would arrive. The most explicit one (in my opinion) is found in the book of Daniel:"
+                            },
+
+                            {
+                                type: "bibleot",
+                                title: "Daniel 9:20-27",
+                                text: "While I was speaking and praying, confessing my sin and the sin of my people Israel, and presenting my plea before the Lord my God for the holy hill of my God, while I was speaking in prayer, the man Gabriel, whom I had seen in the vision at the first, came to me in swift flight at the time of the evening sacrifice. He made me understand, speaking with me and saying, “O Daniel, I have now come out to give you insight and understanding. At the beginning of your pleas for mercy a word went out, and I have come to tell it to you, for you are greatly loved. Therefore consider the word and understand the vision. <blue>Seventy weeks are decreed about your people and your holy city, to finish the transgression, to put an end to sin, and to atone for iniquity, to bring in everlasting righteousness, to seal both vision and prophet, and to anoint a most holy place.</blue> <green>Know therefore and understand that from the going out of the word to restore and build Jerusalem to the coming of an anointed one, a prince, there shall be seven weeks. Then for sixty-two weeks it shall be built again with squares and moat, but in a troubled time. And after the sixty-two weeks, an anointed one shall be cut off and shall have nothing.</green> <purple>And the people of the prince who is to come shall destroy the city and the sanctuary. Its end shall come with a flood, and to the end there shall be war. Desolations are decreed. And he shall make a strong covenant with many for one week, and for half of the week he shall put an end to sacrifice and offering. And on the wing of abominations shall come one who makes desolate, until the decreed end is poured out on the desolator.</purple>"
+                            },
+                            {
+                                type: "commentary",
+                                text: "<blue>The general timeframe</blue><br><br><green>The coming of the Messiah and his death</green><br><br><purple>The destruction of the second temple</purple>"
+                            },
+                            
+                            //
+                            //     title: "",
+                            //     type: "bibleot",
+                            //     text: ""
+                            // },
+                            // {
+                            //     title: "",
+                            //     type: "bibleot",
+                            //     text: ""
+                            // },
 
                             // {
                             //     title: "Psalm 110:1",
@@ -9181,7 +9544,7 @@
                             },
                             {
                                 title: "Myself",
-                                text: "Which religion is most likely the truth?<br><br> islam - 2 of 3 books corrupted (the Quran does not mention this anywhere but it's part of Islamic theology, like most teachings), flaws, inconsistencies and double standards, odd behaving prophet, no philosophical depth, copied theology and teachings, confused, sloppy and inconsistent book that contradicts abrahamic belief, newest religion, full of earthly desires, incredibly troubling moral teachings and troubling morality of so called 'good example for mankind'<br><br>hinduism, buddhism - no evidence, senseless theology, manmade religion<br><br>judaism - unfulfilled, abandoned by God, no fulfillment of prophecy, satanic streams and teachings<br><br>christianity - 600+ prophecies fulfilled, complete and perfectly executed old testament fulfillment, extraordinary moral teachings (incomparable to any other religion or philosophy), strong historical evidence, plenty of well documented miracles, incredibly rich philosphical depth, builder of western society and morality, christian miracles still happening in today's day and age"
+                                text: "Which religion is most likely the truth?<br><br> islam - 2 of 3 books corrupted (the Quran does not mention this anywhere but it's part of Islamic theology, like most teachings), flaws, inconsistencies and double standards, odd behaving prophet, no philosophical depth, copied theology and teachings, confused, sloppy and inconsistent book that contradicts abrahamic belief, newest religion, full of earthly desires, incredibly troubling moral teachings and troubling morality of so called 'good example for mankind'<br><br>hinduism, buddhism - no evidence, senseless theology, manmade religion<br><br>judaism - unfulfilled, abandoned by God, no fulfillment of prophecy, satanic streams and teachings<br><br>christianity - 300+ prophecies fulfilled, complete and perfectly executed old testament fulfillment, extraordinary moral teachings (incomparable to any other religion or philosophy), strong historical evidence, plenty of well documented miracles, incredibly rich philosphical depth, builder of western society and morality, christian miracles still happening in today's day and age"
                             },
                             {
                                 title: "",
