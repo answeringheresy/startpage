@@ -12,12 +12,12 @@
 
         .page { max-width: 1100px; margin: 0 auto; padding: 32px 20px 48px; }
         header { text-align: center; margin-bottom: 28px; }
-        header h1 { color:#28a745; font-size: 38px; margin-bottom: 10px; }
+        header h1 { color:#000000; font-size: 38px; margin-bottom: 10px; }
         header p { color:#555; font-size: 18px; line-height: 1.7; max-width: 800px; margin: 0 auto; }
 
         /* Topic grid (circle buttons) */
         .topics { margin-top: 26px; }
-        .topics h2 { color:#28a745; font-size: 26px; margin-bottom: 16px; text-align:center; }
+        .topics h2 { color:#000000; font-size: 26px; margin-bottom: 16px; text-align:center; }
         .topic-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 22px; align-items: center; }
         .topic-item { display:flex; justify-content:center; }
         .topic-button {
@@ -33,7 +33,7 @@
 
         /* Contact section (reusing index2 visual style) */
         .contact { margin-top: 44px; }
-        .contact h2 { color:#28a745; font-size: 26px; margin-bottom: 12px; text-align:center; }
+        .contact h2 { color:#000000; font-size: 26px; margin-bottom: 12px; text-align:center; }
         .contact p { color:#555; text-align:center; margin-bottom: 12px; }
 
         .social-links {
@@ -69,8 +69,19 @@
         <header>
             <h1>Welcome</h1>
             <p>
-                On this site, i expose false religions made to lead people away from the true God. Writings on Christian teachings will follow.             </p>
+                On this site, i expose false religions made to lead people away from the true God. I also write about the Christian faith.             </p>
         </header>
+
+        <section class="christian-teachings">
+
+            <div class="topic-grid">
+                <div class="topic-item">
+                    <a class="topic-button" href="christianity.html" style="background: #FFD700; color: #ffffff;">Christian Teachings</a>
+                </div>
+            </div>
+        </section>
+
+        <hr style="border: none; height: 2px; background: #ddd; margin: 40px 0;">
 
         <section class="topics">
             <h2>Choose a Belief</h2>
